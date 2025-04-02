@@ -3,6 +3,7 @@ import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
 
 import Box from '@mui/material/Box';
+import { Typography } from '@mui/material';
 import SvgIcon from '@mui/material/SvgIcon';
 import InputBase from '@mui/material/InputBase';
 import { useTheme } from '@mui/material/styles';
@@ -25,7 +26,6 @@ import { SearchNotFound } from 'src/components/search-not-found';
 
 import { ResultItem } from './result-item';
 import { groupItems, applyFilter, getAllItems } from './utils';
-import { Typography } from '@mui/material';
 
 // ----------------------------------------------------------------------
 

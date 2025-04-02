@@ -284,7 +284,7 @@ function useNavColorVars(theme, settings) {
 
   return useMemo(() => {
     switch (settings.navColor) {
-      case 'integrate':
+      case 'apparent':
         return {
           layout: {
             '--layout-nav-bg': palette.grey[900],
@@ -300,7 +300,7 @@ function useNavColorVars(theme, settings) {
           },
           section: {},
         };
-      case 'apparent':
+      case 'integrate':
         return {
           layout: {
             '--layout-nav-horizontal-bg': varAlpha(palette.grey['900Channel'], 0.96),
