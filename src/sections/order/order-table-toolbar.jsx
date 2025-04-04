@@ -92,7 +92,7 @@ export function OrderTableToolbar({ filters, onResetPage, dateError }) {
           />
 
           <IconButton onClick={popover.onOpen}>
-            <Iconify icon="eva:more-vertical-fill" />
+            <Iconify icon="mynaui:refresh-alt" />
           </IconButton>
         </Stack>
       </Stack>

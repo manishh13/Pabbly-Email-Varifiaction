@@ -33,12 +33,15 @@ export const dashboardRoutes = [
     element: CONFIG.auth.skip ? <>{layoutContent}</> : <AuthGuard>{layoutContent}</AuthGuard>,
     children: [
       { element: <Dashboard />, index: true },
-      { path: 'two', element: <PageTwo /> },
-      { path: 'get-help', element: <GetHelp /> },
+      // { path: 'two', element: <PageTwo /> },
+      // { path: 'get-help', element: <GetHelp /> },
+      // { path: 'get-help', element: <CreditSummary /> },
+      { path: 'get-help', element: <API /> },
       {
-        path: 'Settings',
+        path: 'settings',
         children: [
-          { element: <CreditSummary />, index: true },
+          // { element: <CreditSummary />, index: true },
+          { path: 'credit-summary', element: <CreditSummary /> },
           { path: 'api', element: <API /> },
           { path: 'team-members', element: <TeamMembers /> },
         ],

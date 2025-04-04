@@ -26,12 +26,14 @@ export const navData = [
     items: [
       {
         title: 'Settings',
-        path: paths.dashboard.group.root,
+        path: paths.dashboard.settings.root,
         icon: ICONS.settings,
         children: [
-          { title: 'Credit Summary', path: paths.dashboard.group.root },
-          { title: 'API', path: paths.dashboard.group.api },
-          { title: 'Team-Members', path: paths.dashboard.group.teammembers },
+          { title: 'Credit Summary', path: paths.dashboard.settings.root },
+          { title: 'API', path: paths.dashboard.settings.api },
+          { title: 'Team-Members', path: paths.dashboard.settings.teammembers },
+          { title: 'Activity-Log', path: paths.dashboard.settings.teammembers },
+          { title: 'Time Zone', path: paths.dashboard.settings.teammembers },
         ],
       },
     ],

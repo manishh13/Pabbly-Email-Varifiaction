@@ -1,8 +1,6 @@
 import { useState, useCallback } from 'react';
 
-import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import Tabs from '@mui/material/Tabs';
 import Card from '@mui/material/Card';
 import Table from '@mui/material/Table';
 import Tooltip from '@mui/material/Tooltip';
@@ -19,10 +17,8 @@ import { useSetState } from 'src/hooks/use-set-state';
 
 import { fIsAfter, fIsBetween } from 'src/utils/format-time';
 
-import { varAlpha } from 'src/theme/styles';
 import { _orders, ORDER_STATUS_OPTIONS } from 'src/_mock';
 
-import { Label } from 'src/components/label';
 // import { toast } from 'src/components/snackbar';
 import { Iconify } from 'src/components/iconify';
 import { Scrollbar } from 'src/components/scrollbar';
@@ -49,9 +45,9 @@ import { OrderTableFiltersResult } from '../../../order/order-table-filters-resu
 const STATUS_OPTIONS = [{ value: 'all', label: 'All' }, ...ORDER_STATUS_OPTIONS];
 
 const TABLE_HEAD = [
-  { id: 'orderNumber', label: 'Status/Name/Date' },
+  { id: 'orderNumber', label: 'Status/Name/Date', width: 88 },
   { id: 'name', label: 'Number of Emails/Credits Consumed' },
-  { id: 'createdAt', label: 'Action' },
+  { id: 'createdAt', label: 'Action', width: 140 },
   // {
   //   id: 'totalQuantity',
   //   label: 'Items',
@@ -65,7 +61,7 @@ const TABLE_HEAD = [
 
 // ----------------------------------------------------------------------
 
-export function OrderListView() {
+export function CurrentSummaryTable() {
   const table = useTable({ defaultOrderBy: 'orderNumber' });
 
   const router = useRouter();
@@ -153,13 +149,13 @@ export function OrderListView() {
         /> */}
       <Card>
         <CardHeader
-          title="Home"
-          subheader="Verify and manage all your uploaded email lists here."
+          title="Email Verification Logs"
+          subheader="View all email verification activities, including type, date, summary, and credit usage. Use filters or search to find specific logs."
           sx={{ mb: 3 }}
         />
 
         <Divider />
-        <Tabs
+        {/* <Tabs
           value={filters.state.status}
           onChange={handleFilterStatus}
           sx={{
@@ -195,7 +191,7 @@ export function OrderListView() {
               }
             />
           ))}
-        </Tabs>
+        </Tabs> */}
 
         <OrderTableToolbar
           filters={filters}

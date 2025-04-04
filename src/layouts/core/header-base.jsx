@@ -153,7 +153,9 @@ export function HeaderBase({
               {/* -- Searchbar -- */}
               {searchbar && <Searchbar data-slot="searchbar" data={data?.nav} />}
 
-              <Button variant="contained">Upgrade</Button>
+              <Button variant="contained" color="error">
+                Upgrade
+              </Button>
               {/* -- Account drawer -- */}
               {account && <AccountDrawer data-slot="account" data={data?.account} />}
 

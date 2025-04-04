@@ -1,8 +1,7 @@
-import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
 import MenuList from '@mui/material/MenuList';
 import Collapse from '@mui/material/Collapse';
 import MenuItem from '@mui/material/MenuItem';
@@ -14,13 +13,24 @@ import ListItemText from '@mui/material/ListItemText';
 
 import { useBoolean } from 'src/hooks/use-boolean';
 
+import { fDateTime } from 'src/utils/format-time';
+
 // import { fCurrency } from 'src/utils/format-number';
-import { fDate, fTime } from 'src/utils/format-time';
+
+import { Typography } from '@mui/material';
 
 import { Label } from 'src/components/label';
 import { Iconify } from 'src/components/iconify';
 // import { ConfirmDialog } from 'src/components/custom-dialog';
 import { usePopover, CustomPopover } from 'src/components/custom-popover';
+
+const buttonTitle = [
+  'Uploading',
+  'Start Verification',
+  'Start Verification',
+  'Verification In Progress',
+  'Download Report',
+];
 
 // ----------------------------------------------------------------------
 
@@ -42,13 +52,37 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
       </TableCell>
 
       <TableCell>
-        <Link color="inherit" onClick={onViewRow} underline="always" sx={{ cursor: 'pointer' }}>
+        <Label
+          variant="soft"
+          color={
+            (row.status === 'completed' && 'success') ||
+            (row.status === 'pending' && 'warning') ||
+            (row.status === 'cancelled' && 'error') ||
+            'default'
+          }
+        >
+          {row.status}
+        </Label>
+
+        <Typography
+          varient="span"
+          color="inherit"
+          onClick={onViewRow}
+          underline="always"
+          sx={{ cursor: 'pointer' }}
+        >
           {row.orderNumber}
-        </Link>
+        </Typography>
+        <Typography variant="body2" sx={{ color: 'text.disabled' }}>
+          {fDateTime(row.createdAt)}
+        </Typography>
       </TableCell>
 
       <TableCell>
-        <Stack spacing={2} direction="row" alignItems="center">
+        <Typography varirent="span" sx={{ fontSize: '14px', fontWeight: 'normal' }}>
+          Contains 128 Emails
+        </Typography>
+        {/* <Stack spacing={2} direction="row" alignItems="center">
           <Avatar alt={row.customer.name} src={row.customer.avatarUrl} />
 
           <Stack
@@ -63,9 +97,9 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
               {row.customer.email}
             </Box>
           </Stack>
-        </Stack>
+        </Stack> */}
       </TableCell>
-
+      {/* 
       <TableCell>
         <ListItemText
           primary={fDate(row.createdAt)}
@@ -77,13 +111,13 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
             typography: 'caption',
           }}
         />
-      </TableCell>
+      </TableCell> */}
 
-      <TableCell align="center"> {row.totalQuantity} </TableCell>
+      {/* <TableCell align="center"> {row.totalQuantity} </TableCell> */}
 
       {/* <TableCell> {fCurrency(row.subtotal)} </TableCell> */}
 
-      <TableCell>
+      {/* <TableCell>
         <Label
           variant="soft"
           color={
@@ -95,16 +129,12 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
         >
           {row.status}
         </Label>
-      </TableCell>
+      </TableCell> */}
 
       <TableCell align="right" sx={{ px: 1, whiteSpace: 'nowrap' }}>
-        <IconButton
-          color={collapse.value ? 'inherit' : 'default'}
-          onClick={collapse.onToggle}
-          sx={{ ...(collapse.value && { bgcolor: 'action.hover' }) }}
-        >
-          <Iconify icon="eva:arrow-ios-downward-fill" />
-        </IconButton>
+        <Button variant="outlined" color="primary">
+          Upgrade
+        </Button>
 
         <IconButton color={popover.open ? 'inherit' : 'default'} onClick={popover.onOpen}>
           <Iconify icon="eva:more-vertical-fill" />

@@ -13,6 +13,7 @@ import { OrderListView } from 'src/sections/dashboard/components/dashboard-table
 
 import { listItemes } from '../../sections/dashboard/components/dashboard-big-card-list-items/dashboard-big-card-list-items';
 
+const imgPath = './public/assets/images/big-card-thumbnail/email-verication-video-thumbnail.jpg';
 const metadata = { title: `Page one | Dashboard - ${CONFIG.site.name}` };
 const { items, style } = listItemes;
 export default function Page() {
@@ -71,7 +72,13 @@ export default function Page() {
         </Box>
         <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', gap: 3 }}>
           <Box>
-            <BigCard Items={items} style={style} buttontitle="Varify Email" />
+            <BigCard
+              Items={items}
+              style={style}
+              buttontitle="Varify Email"
+              visibility="block"
+              img={imgPath}
+            />
           </Box>
           <Box>
             <OrderListView />

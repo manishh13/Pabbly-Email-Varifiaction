@@ -5,7 +5,7 @@ import { Box, Card, Button, Typography, CardContent } from '@mui/material';
 
 import { Iconify } from '../../../../components/iconify';
 
-const BigCard = ({ buttontitle, Items, styles }) => (
+const BigCard = ({ buttontitle, Items, styles, visibility, img }) => (
   <Card
     sx={{
       display: 'flex',
@@ -41,7 +41,7 @@ const BigCard = ({ buttontitle, Items, styles }) => (
           endIcon={
             <Iconify
               icon="material-symbols:keyboard-arrow-down-rounded"
-              style={{ width: 24, height: 24 }}
+              style={{ width: 24, height: 24, display: `${visibility}` }}
             />
           }
         >
@@ -64,7 +64,7 @@ const BigCard = ({ buttontitle, Items, styles }) => (
       }}
     >
       <img
-        src="./public/assets/images/big-card-thumbnail/email-verication-video-thumbnail.jpg"
+        src={img}
         alt="Email Verification Video"
         style={{ width: '100%', height: '100%', objectFit: 'cover' }}
       />

@@ -3,10 +3,10 @@ import { _mock } from './_mock';
 // ----------------------------------------------------------------------
 
 export const ORDER_STATUS_OPTIONS = [
-  { value: 'pending', label: 'Pending' },
-  { value: 'completed', label: 'Completed' },
-  { value: 'cancelled', label: 'Cancelled' },
-  { value: 'refunded', label: 'Refunded' },
+  { value: 'verified', label: 'Verifiend' },
+  { value: 'processing', label: 'Processing' },
+  { value: 'uploading', label: 'Uploading' },
+  { value: 'unverify', label: 'Unverified' },
 ];
 
 const ITEMS = [...Array(3)].map((_, index) => ({
@@ -59,7 +59,7 @@ export const _orders = [...Array(20)].map((_, index) => {
 
   return {
     id: _mock.id(index),
-    orderNumber: `#601${index}`,
+    orderNumber: `List${index + 1}`,
     createdAt: _mock.time(index),
     taxes,
     items,

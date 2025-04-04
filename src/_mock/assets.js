@@ -325,6 +325,15 @@ export const _roles = [
   `Legal Counsel`,
   `Training Coordinator`,
 ];
+// ----------------------------------------------------------------------
+
+export const _emailsCount = [
+  'Contains 128 Emails',
+  'Contains 65 Emails',
+  'Contains 250 Emails',
+  'Contains 128 Emails',
+  'Contains 128 Emails',
+];
 
 // ----------------------------------------------------------------------
 

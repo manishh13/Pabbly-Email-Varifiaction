@@ -15,7 +15,10 @@ export default function Page() {
         <title> {metadata.title}</title>
       </Helmet>
 
-      <BlankView title="Page three" />
+      <BlankView
+        title="Help & Tutorials"
+        subTitle="Tell us about your problem, and we’ll find you a solution."
+      />
     </>
   );
 }

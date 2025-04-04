@@ -43,12 +43,12 @@ export const paths = {
   // DASHBOARD
   dashboard: {
     root: ROOTS.DASHBOARD,
-    two: `${ROOTS.DASHBOARD}/two`,
+    api: `${ROOTS.DASHBOARD}/api`,
     gethelp: `${ROOTS.DASHBOARD}/get-help`,
-    group: {
-      root: `${ROOTS.DASHBOARD}/group`,
-      api: `${ROOTS.DASHBOARD}/group/api`,
-      teammembers: `${ROOTS.DASHBOARD}/group/team-members`,
+    settings: {
+      root: `${ROOTS.DASHBOARD}/settings/credit-summary`,
+      api: `${ROOTS.DASHBOARD}/settings/api`,
+      teammembers: `${ROOTS.DASHBOARD}/settings/team-members`,
     },
   },
 };
