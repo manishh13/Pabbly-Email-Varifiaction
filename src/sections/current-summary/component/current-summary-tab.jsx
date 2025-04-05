@@ -3,10 +3,9 @@ import Tabs from '@mui/material/Tabs';
 
 import { useTabs } from 'src/hooks/use-tabs';
 
-import { DashboardContent } from 'src/layouts/dashboard';
-
 import { Iconify } from 'src/components/iconify';
 
+// import APIComponent from 'src/sections/api/components/api-component';
 // import { AccountGeneral } from '../account-general';
 // import { AccountBilling } from '../account-billing';
 // import { AccountSocialLinks } from '../account-social-links';
@@ -21,7 +20,7 @@ const TABS = [
     label: 'Credits Summary',
     icon: <Iconify icon="solar:user-id-bold" width={24} />,
   },
-  { value: 'billing', label: 'API', icon: <Iconify icon="solar:bill-list-bold" width={24} /> },
+  { value: 'billing', label: 'API', icon: <Iconify icon="et:gears" width={24} /> },
   {
     value: 'notifications',
     label: 'Team Members',
@@ -37,14 +36,14 @@ export function CurrentSummaryView() {
   const tabs = useTabs('general');
 
   return (
-    <DashboardContent>
-      <Tabs value={tabs.value} onChange={tabs.onChange} sx={{ mb: { xs: 3, md: 5 } }}>
+    <>
+      <Tabs value={tabs.value} onChange={tabs.onChange}>
         {TABS.map((tab) => (
           <Tab key={tab.value} label={tab.label} icon={tab.icon} value={tab.value} />
         ))}
       </Tabs>
 
-      {/* {tabs.value === 'general' && <AccountGeneral />} */}
+      {/* {tabs.value === 'general' && <APIComponent />} */}
 
       {/* {tabs.value === 'billing' && (
         <AccountBilling
@@ -60,6 +59,6 @@ export function CurrentSummaryView() {
       {/* {tabs.value === 'social' && <AccountSocialLinks socialLinks={_userAbout.socialLinks} />} */}
 
       {/* {tabs.value === 'security' && <AccountChangePassword />} */}
-    </DashboardContent>
+    </>
   );
 }

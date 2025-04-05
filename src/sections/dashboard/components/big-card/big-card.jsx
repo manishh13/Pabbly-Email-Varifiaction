@@ -5,7 +5,15 @@ import { Box, Card, Button, Typography, CardContent } from '@mui/material';
 
 import { Iconify } from '../../../../components/iconify';
 
-const BigCard = ({ buttontitle, Items, styles, visibility, img }) => (
+const BigCard = ({
+  buttontitle,
+  Items,
+  styles,
+  visibility,
+  img,
+  buttonVisibility,
+  bigcardtitle,
+}) => (
   <Card
     sx={{
       display: 'flex',
@@ -19,7 +27,7 @@ const BigCard = ({ buttontitle, Items, styles, visibility, img }) => (
   >
     {/* Left Section */}
     <CardContent sx={{ width: '60%', display: 'flex', flexDirection: 'column  ', gap: 2 }}>
-      <Typography variant="h6">Verification Guidelines</Typography>
+      <Typography variant="h6">{bigcardtitle}</Typography>
       <Typography variant="body2" color="text.secondary">
         Please adhere to the following guidelines when uploading your CSV file:
       </Typography>
@@ -30,7 +38,7 @@ const BigCard = ({ buttontitle, Items, styles, visibility, img }) => (
           </li>
         ))}
       </ul>
-      <Box>
+      <Box sx={{ display: `${buttonVisibility}` }}>
         <Button
           variant="outlined"
           size="large"

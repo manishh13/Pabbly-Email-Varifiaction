@@ -78,6 +78,7 @@ export default function Page() {
               buttontitle="Varify Email"
               visibility="block"
               img={imgPath}
+              bigcardtitle="Verification Guidelines"
             />
           </Box>
           <Box>

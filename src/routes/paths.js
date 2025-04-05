@@ -49,6 +49,8 @@ export const paths = {
       root: `${ROOTS.DASHBOARD}/settings/credit-summary`,
       api: `${ROOTS.DASHBOARD}/settings/api`,
       teammembers: `${ROOTS.DASHBOARD}/settings/team-members`,
+      activitylog: `${ROOTS.DASHBOARD}/settings/activity-log`,
+      timezone: `${ROOTS.DASHBOARD}/settings/time-zone`,
     },
   },
 };

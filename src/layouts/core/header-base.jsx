@@ -156,6 +156,7 @@ export function HeaderBase({
               <Button variant="contained" color="error">
                 Upgrade
               </Button>
+
               {/* -- Account drawer -- */}
               {account && <AccountDrawer data-slot="account" data={data?.account} />}
 

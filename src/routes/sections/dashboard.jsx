@@ -16,6 +16,8 @@ const GetHelp = lazy(() => import('src/pages/app/get-help'));
 const CreditSummary = lazy(() => import('src/pages/app/credit-summary'));
 const API = lazy(() => import('src/pages/app/api'));
 const TeamMembers = lazy(() => import('src/pages/app/team-members'));
+const ActivityLog = lazy(() => import('src/pages/app/activity-log'));
+const TimeZone = lazy(() => import('src/pages/app/time-zone'));
 
 // ----------------------------------------------------------------------
 
@@ -34,9 +36,8 @@ export const dashboardRoutes = [
     children: [
       { element: <Dashboard />, index: true },
       // { path: 'two', element: <PageTwo /> },
-      // { path: 'get-help', element: <GetHelp /> },
-      // { path: 'get-help', element: <CreditSummary /> },
-      { path: 'get-help', element: <API /> },
+      { path: 'get-help', element: <GetHelp /> },
+
       {
         path: 'settings',
         children: [
@@ -44,6 +45,8 @@ export const dashboardRoutes = [
           { path: 'credit-summary', element: <CreditSummary /> },
           { path: 'api', element: <API /> },
           { path: 'team-members', element: <TeamMembers /> },
+          { path: 'activity-log', element: <ActivityLog /> },
+          { path: 'time-zone', element: <TimeZone /> },
         ],
       },
     ],
