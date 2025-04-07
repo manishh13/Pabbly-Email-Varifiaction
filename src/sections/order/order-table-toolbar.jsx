@@ -4,16 +4,17 @@ import Stack from '@mui/material/Stack';
 import MenuList from '@mui/material/MenuList';
 import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
-import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 // import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+
+import { Button, Tooltip } from '@mui/material';
 
 import { Iconify } from 'src/components/iconify';
 import { usePopover, CustomPopover } from 'src/components/custom-popover';
 
 // ----------------------------------------------------------------------
 
-export function OrderTableToolbar({ filters, onResetPage, dateError }) {
+export function OrderTableToolbar({ filters, onResetPage, dateError, buttonName, placeholder }) {
   const popover = usePopover();
 
   const handleFilterName = useCallback(
@@ -81,7 +82,7 @@ export function OrderTableToolbar({ filters, onResetPage, dateError }) {
             fullWidth
             value={filters.state.name}
             onChange={handleFilterName}
-            placeholder="Search customer or order number..."
+            placeholder={placeholder}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
@@ -90,10 +91,24 @@ export function OrderTableToolbar({ filters, onResetPage, dateError }) {
               ),
             }}
           />
-
-          <IconButton onClick={popover.onOpen}>
-            <Iconify icon="mynaui:refresh-alt" />
-          </IconButton>
+          {buttonName === 'filter' ? (
+            <Button
+              size="large"
+              color="primary"
+              startIcon={<Iconify icon="mdi:filter" style={{ width: 18, height: 18 }} />}
+            >
+              Filters
+            </Button>
+          ) : (
+            <Tooltip title="Click here to refresh data." arrow placement="top">
+              <Button size="large" color="primary">
+                <Iconify
+                  icon="lucide:refresh-ccw"
+                  sx={{ color: '#078DEE', width: '24px', height: '24px' }}
+                />
+              </Button>
+            </Tooltip>
+          )}
         </Stack>
       </Stack>
 

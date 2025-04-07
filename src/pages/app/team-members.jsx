@@ -25,7 +25,7 @@ export default function Page() {
       <PageHeader
         title="Team Members"
         descriptions="Add team members and share folder(s) access with them from here. "
-        buttontitle="Varify Email"
+        buttontitle="Verify Email"
         visibility="none"
       />
       <CurrentSummaryView />

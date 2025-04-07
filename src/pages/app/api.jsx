@@ -23,7 +23,7 @@
 //       <PageHeader
 //         title="API"
 //         descriptions="Generate your API Key and Secret Key to perform email verifications directly through the Pabbly Email Verification API. "
-//         buttontitle="Varify Email"
+//         buttontitle="Verify Email"
 //         visibility="none"
 //       />
 //       <CurrentSummaryView />
@@ -39,7 +39,7 @@
 //         <BigCard
 //           Items={items}
 //           style={style}
-//           buttontitle="Varify Email"
+//           buttontitle="Verify Email"
 //           visibility="none"
 //           img={imgPath}
 //           buttonVisibility="none"
@@ -71,7 +71,7 @@ export default function Page() {
       <PageHeader
         title="API"
         descriptions="Generate your API Key and Secret Key to perform email verifications directly through the Pabbly Email Verification API. "
-        buttontitle="Varify Email"
+        buttontitle="Verify Email"
         visibility="none"
       />
       <CurrentSummaryView />

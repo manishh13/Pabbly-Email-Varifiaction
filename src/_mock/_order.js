@@ -3,12 +3,67 @@ import { _mock } from './_mock';
 // ----------------------------------------------------------------------
 
 export const ORDER_STATUS_OPTIONS = [
-  { value: 'verified', label: 'Verifiend' },
-  { value: 'processing', label: 'Processing' },
-  { value: 'uploading', label: 'Uploading' },
-  { value: 'unverify', label: 'Unverified' },
+  {
+    value: 'verified',
+    label: 'Verified',
+    tooltipTitle: 'View all emails lists that have been verified.',
+  },
+  {
+    value: 'processing',
+    label: 'Processing',
+    tooltipTitle: 'View all emails lists currently under the verifcation process.',
+  },
+  {
+    value: 'uploading',
+    label: 'Uploading',
+    tooltipTitle: 'View all emails lists current being uploading.',
+  },
+  {
+    value: 'unverify',
+    label: 'Unverified',
+    tooltipTitle: 'View all emails lists that remains unverified.',
+  },
+];
+const buttonTitle = [
+  {
+    value: 'Uploading',
+    label: 'Uploading',
+    tooltipTitle: 'Click to start verification',
+    ellipsisTooltipTitle: 'Actions unavailable during verification.',
+  },
+  {
+    value: 'Start Verification',
+    label: 'Start Verification',
+    tooltipTitle: 'Click to start verification',
+    ellipsisTooltipTitle: 'Click for more options.',
+  },
+  {
+    value: 'Start Verification',
+    label: 'Start Verification',
+    tooltipTitle: 'Click to start verification',
+    ellipsisTooltipTitle: 'Click for more options.',
+  },
+  {
+    value: 'Verification In Progress',
+    label: 'Verification In Progress',
+    tooltipTitle: 'Verification in progress. Plase wait.',
+    ellipsisTooltipTitle: 'Actions unavailable during verification.',
+  },
+  {
+    value: 'Download Report',
+    label: 'Download Report',
+    tooltipTitle: 'Click to download report',
+    ellipsisTooltipTitle: 'Click for more options.',
+  },
 ];
 
+const verificationStatus = ['Uploading', 'Unverified', 'Unverified', 'Processing', 'Verified'];
+const emailStatus = [
+  'Bulk Verification',
+  'Bulk Verification',
+  'Single Verification',
+  'Email Credits Purchased',
+];
 const ITEMS = [...Array(3)].map((_, index) => ({
   id: _mock.id(index),
   sku: `16H9UR${index}`,
@@ -18,7 +73,7 @@ const ITEMS = [...Array(3)].map((_, index) => ({
   price: _mock.number.price(index),
 }));
 
-export const _orders = [...Array(20)].map((_, index) => {
+export const _orders = [...Array(5)].map((_, index) => {
   const shipping = 10;
 
   const discount = 10;
@@ -71,6 +126,9 @@ export const _orders = [...Array(20)].map((_, index) => {
     delivery,
     totalAmount,
     totalQuantity,
+    verificationStatus,
+    emailStatus,
+    buttonTitle,
     shippingAddress: {
       fullAddress: '19034 Verna Unions Apt. 164 - Honolulu, RI / 87535',
       phoneNumber: '365-374-4961',

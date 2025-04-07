@@ -28,7 +28,7 @@ export default function APIComponent() {
       <BigCard
         Items={items}
         style={style}
-        buttontitle="Varify Email"
+        buttontitle="Verify Email"
         visibility="none"
         img={imgPath}
         buttonVisibility="none"

@@ -21,7 +21,7 @@ export default function Page() {
       <PageHeader
         title="Activity Log"
         descriptions="Keep track of all actions in your Pabbly Email Verification account, like verifying single emails, uploading and verifying email lists, downloading reports, deleting email lists, adding team members, and regenerating API keys. Activity Log helps you monitor changes and ensure everything runs smoothly.  "
-        buttontitle="Varify Email"
+        buttontitle="Verify Email"
         visibility="none"
       />
       <CurrentSummaryView />
@@ -35,25 +35,6 @@ export default function Page() {
         bigcardtitle="Points To Remember"
       />
       <ActivityLogTable />
-      {/* <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-around',
-
-          gap: 3,
-        }}
-      >
-        <BigCard
-          Items={items}
-          style={style}
-          buttontitle="Varify Email"
-          visibility="block"
-          img={imgPath}
-        />
-
-        <APIKeyGenerate />
-      </Box> */}
     </DashboardContent>
   );
 }

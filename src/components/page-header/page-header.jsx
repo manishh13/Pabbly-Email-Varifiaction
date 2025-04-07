@@ -1,13 +1,13 @@
 import React from 'react';
 
 import Box from '@mui/material/Box';
+import { Tooltip } from '@mui/material';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { MenuItem, MenuList } from '@mui/material';
 
 import { Iconify } from '../iconify';
+import { usePopover } from '../custom-popover';
 import LearnMoreTypography from '../learn-more/learn-more';
-import { usePopover, CustomPopover } from '../custom-popover';
 
 // ----------------------------------------------------------------------
 const data = [
@@ -20,6 +20,7 @@ export default function PageHeader({
   showButton = true,
   buttontitle,
   visibility,
+  tooltipTitle,
 }) {
   const popover = usePopover();
   const [buttonPopover, setPopover] = React.useState(false);
@@ -42,50 +43,28 @@ export default function PageHeader({
 
       {showButton && (
         <Box>
-          <Button
-            variant="contained"
-            size="large"
-            color="primary"
-            style={{ display: `${visibility}` }}
-            startIcon={
-              <Iconify icon="heroicons:plus-circle-16-solid" style={{ width: 18, height: 18 }} />
-            }
-            endIcon={
-              <Iconify
-                icon="material-symbols:keyboard-arrow-down-rounded"
-                style={{ width: 24, height: 24 }}
-              />
-            }
-            onClick={() => {
-              setPopover(!buttonPopover);
-            }}
-          >
-            {buttontitle}
-          </Button>
-
-          {buttonPopover && (
-            <CustomPopover
-              open={popover.open}
-              anchorEl={popover.anchorEl}
-              onClose={popover.onClose}
-              slotProps={{ arrow: { placement: 'top-right' } }}
+          <Tooltip title={tooltipTitle} arrow placement="top">
+            <Button
+              variant="contained"
+              size="large"
+              color="primary"
+              style={{ display: `${visibility}` }}
+              startIcon={
+                <Iconify icon="heroicons:plus-circle-16-solid" style={{ width: 18, height: 18 }} />
+              }
+              endIcon={
+                <Iconify
+                  icon="material-symbols:keyboard-arrow-down-rounded"
+                  style={{ width: 24, height: 24 }}
+                />
+              }
+              onClick={() => {
+                setPopover(!buttonPopover);
+              }}
             >
-              <MenuList>
-                {data.map((option) => (
-                  <MenuItem
-                    key={option.value}
-                    selected={option.value === 'verify-single-email'}
-                    onClick={() => {
-                      popover.onClose();
-                      // onChangePublish(option.value);
-                    }}
-                  >
-                    {option.label}
-                  </MenuItem>
-                ))}
-              </MenuList>
-            </CustomPopover>
-          )}
+              {buttontitle}
+            </Button>
+          </Tooltip>
         </Box>
       )}
     </Box>

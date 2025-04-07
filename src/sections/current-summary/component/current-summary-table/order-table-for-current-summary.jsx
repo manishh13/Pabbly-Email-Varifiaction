@@ -1,14 +1,12 @@
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import MenuList from '@mui/material/MenuList';
 import Collapse from '@mui/material/Collapse';
 import MenuItem from '@mui/material/MenuItem';
 import TableRow from '@mui/material/TableRow';
 import Checkbox from '@mui/material/Checkbox';
 import TableCell from '@mui/material/TableCell';
-import IconButton from '@mui/material/IconButton';
 import ListItemText from '@mui/material/ListItemText';
 
 import { useBoolean } from 'src/hooks/use-boolean';
@@ -17,7 +15,7 @@ import { fDateTime } from 'src/utils/format-time';
 
 // import { fCurrency } from 'src/utils/format-number';
 
-import { Tooltip, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 
 import { Label } from 'src/components/label';
 import { Iconify } from 'src/components/iconify';
@@ -26,16 +24,13 @@ import { usePopover, CustomPopover } from 'src/components/custom-popover';
 
 // ----------------------------------------------------------------------
 
-export function OrderTableRow({
+export function CreditSummaryTable({
   row,
   selected,
   onViewRow,
   onSelectRow,
-  onDeleteRow,
-  buttonTitle,
-  verificationStatus,
-  toolTitle,
-  ellipsisTooltipTitle,
+
+  emailStatus,
 }) {
   const confirm = useBoolean();
 
@@ -57,17 +52,16 @@ export function OrderTableRow({
         <Label
           variant="soft"
           color={
-            (verificationStatus === 'Verified' && 'success') ||
-            (verificationStatus === 'Processing' && 'primary') ||
-            (verificationStatus === 'Uploading' && 'warning') ||
-            (verificationStatus === 'Unverified' && 'error') ||
+            (emailStatus === 'Email Credits Purchased' && 'success') ||
+            (emailStatus === 'Bulk Verification' && 'error') ||
+            (emailStatus === 'Single Verification' && 'error') ||
             'default'
           }
         >
-          {verificationStatus}
+          {emailStatus}
         </Label>
 
-        <Typography
+        {/* <Typography
           varient="span"
           color="inherit"
           onClick={onViewRow}
@@ -75,7 +69,7 @@ export function OrderTableRow({
           sx={{ cursor: 'pointer' }}
         >
           {row.orderNumber}
-        </Typography>
+        </Typography> */}
         <Typography variant="body2" sx={{ color: 'text.disabled' }}>
           {fDateTime(row.createdAt)}
         </Typography>
@@ -87,7 +81,7 @@ export function OrderTableRow({
         </Typography>
       </TableCell>
 
-      <TableCell align="right" sx={{ px: 1, whiteSpace: 'nowrap' }}>
+      {/* <TableCell align="right" sx={{ px: 1, whiteSpace: 'nowrap' }}>
         <Tooltip title={toolTitle} arrow placement="top">
           <Button variant="outlined" color="primary">
             {buttonTitle}
@@ -109,7 +103,7 @@ export function OrderTableRow({
             </IconButton>
           )}
         </Tooltip>
-      </TableCell>
+      </TableCell> */}
     </TableRow>
   );
 

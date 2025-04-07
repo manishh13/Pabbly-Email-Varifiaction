@@ -7,7 +7,7 @@ import PageHeader from 'src/components/page-header/page-header';
 import { StatsCards } from 'src/components/stats-cards/stats-cards';
 
 import { CurrentSummaryView } from 'src/sections/current-summary/component/current-summary-tab';
-import { CurrentSummaryTable } from 'src/sections/current-summary/component/current-summary-table/current-summary-table';
+import { CurrentSummaryTable2 } from 'src/sections/current-summary/component/current-summary-table/current-summary-table-2';
 
 import { listItemes } from '../../sections/dashboard/components/dashboard-big-card-list-items/dashboard-big-card-list-items';
 
@@ -23,7 +23,7 @@ export default function Page() {
       <PageHeader
         title="Credits Summary"
         descriptions="View a summary of your email verification credits. "
-        buttontitle="Varify Email"
+        buttontitle="Verify Email"
       />
       <CurrentSummaryView />
       <Box
@@ -40,6 +40,7 @@ export default function Page() {
           color="primary"
           icon_name="Processed.svg"
           icon_color="#10cbf3"
+          tooltipTitle="Number of emails credits consumed by your account."
         />
 
         <StatsCards
@@ -48,6 +49,7 @@ export default function Page() {
           color="primary"
           icon_name="Complete.svg"
           icon_color="#1d88fa"
+          tooltipTitle="Number of emails credits remaining in your account."
         />
 
         <StatsCards
@@ -56,9 +58,13 @@ export default function Page() {
           color="success"
           icon_name="list.svg"
           icon_color="#28a645"
+          tooltipTitle="Number of emails lists uploaded in your account."
         />
       </Box>
-      <CurrentSummaryTable />
+      {/* <OrderListView /> */}
+      {/* <CurrentSummaryTable />
+       */}
+      <CurrentSummaryTable2 />
     </DashboardContent>
   );
 }

@@ -46,7 +46,10 @@ import { OrderTableFiltersResult } from '../../../order/order-table-filters-resu
 
 // ----------------------------------------------------------------------
 
-const STATUS_OPTIONS = [{ value: 'all', label: 'All' }, ...ORDER_STATUS_OPTIONS];
+const STATUS_OPTIONS = [
+  { value: 'all', label: 'All', tooltipTitle: 'View all emails lists that have been uploaded.' },
+  ...ORDER_STATUS_OPTIONS,
+];
 
 const TABLE_HEAD = [
   { id: 'orderNumber', label: 'Status/Name/Date' },
@@ -169,31 +172,33 @@ export function OrderListView() {
           }}
         >
           {STATUS_OPTIONS.map((tab) => (
-            <Tab
-              key={tab.value}
-              iconPosition="end"
-              value={tab.value}
-              label={tab.label}
-              icon={
-                <Label
-                  variant={
-                    ((tab.value === 'all' || tab.value === filters.state.status) && 'filled') ||
-                    'soft'
-                  }
-                  color={
-                    (tab.value === 'verified' && 'success') ||
-                    (tab.value === 'processing' && 'primary') ||
-                    (tab.value === 'uploading' && 'warning') ||
-                    (tab.value === 'unverify' && 'error') ||
-                    'default'
-                  }
-                >
-                  {['completed', 'pending', 'cancelled', 'refunded'].includes(tab.value)
-                    ? tableData.filter((user) => user.status === tab.value).length
-                    : tableData.length}
-                </Label>
-              }
-            />
+            <Tooltip title={tab.tooltipTitle} arrow placement="top">
+              <Tab
+                key={tab.value}
+                iconPosition="end"
+                value={tab.value}
+                label={tab.label}
+                icon={
+                  <Label
+                    variant={
+                      ((tab.value === 'all' || tab.value === filters.state.status) && 'filled') ||
+                      'soft'
+                    }
+                    color={
+                      (tab.value === 'verified' && 'success') ||
+                      (tab.value === 'processing' && 'primary') ||
+                      (tab.value === 'uploading' && 'warning') ||
+                      (tab.value === 'unverify' && 'error') ||
+                      'default'
+                    }
+                  >
+                    {['completed', 'pending', 'cancelled', 'refunded'].includes(tab.value)
+                      ? tableData.filter((user) => user.status === tab.value).length
+                      : tableData.length}
+                  </Label>
+                }
+              />
+            </Tooltip>
           ))}
         </Tabs>
 
@@ -201,6 +206,7 @@ export function OrderListView() {
           filters={filters}
           onResetPage={table.onResetPage}
           dateError={dateError}
+          placeholder="Search customer or order number..."
         />
 
         {canReset && (
@@ -255,7 +261,7 @@ export function OrderListView() {
                     table.page * table.rowsPerPage,
                     table.page * table.rowsPerPage + table.rowsPerPage
                   )
-                  .map((row) => (
+                  .map((row, index) => (
                     <OrderTableRow
                       key={row.id}
                       row={row}
@@ -263,6 +269,10 @@ export function OrderListView() {
                       onSelectRow={() => table.onSelectRow(row.id)}
                       onDeleteRow={() => handleDeleteRow(row.id)}
                       onViewRow={() => handleViewRow(row.id)}
+                      buttonTitle={row.buttonTitle[index].value}
+                      toolTitle={row.buttonTitle[index].tooltipTitle}
+                      verificationStatus={row.verificationStatus[index]}
+                      ellipsisTooltipTitle={row.buttonTitle[index].ellipsisTooltipTitle}
                     />
                   ))}
 

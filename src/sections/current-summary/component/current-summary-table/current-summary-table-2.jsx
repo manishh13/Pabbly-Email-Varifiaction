@@ -36,8 +36,8 @@ import {
   TablePaginationCustom,
 } from 'src/components/table';
 
-import { OrderTableRow } from '../../../order/order-table-row';
 import { OrderTableToolbar } from '../../../order/order-table-toolbar';
+import { CreditSummaryTable } from './order-table-for-current-summary';
 import { OrderTableFiltersResult } from '../../../order/order-table-filters-result';
 
 // ----------------------------------------------------------------------
@@ -45,23 +45,14 @@ import { OrderTableFiltersResult } from '../../../order/order-table-filters-resu
 const STATUS_OPTIONS = [{ value: 'all', label: 'All' }, ...ORDER_STATUS_OPTIONS];
 
 const TABLE_HEAD = [
-  { id: 'orderNumber', label: 'Status/Name/Date', width: 88 },
-  { id: 'name', label: 'Number of Emails/Credits Consumed' },
-  { id: 'createdAt', label: 'Action', width: 140 },
-  // {
-  //   id: 'totalQuantity',
-  //   label: 'Items',
-  //   width: 120,
-  //   align: 'center',
-  // },
-  // { id: 'totalAmount', label: 'Price', width: 140 },
-  // { id: 'status', label: 'Status', width: 110 },
-  // { id: '', width: 88 },
+  { id: 'orderNumber', label: 'Status/Date' },
+  { id: 'name', label: 'Verification Summary' },
+  { id: 'createdAt', label: 'Credits' },
 ];
 
 // ----------------------------------------------------------------------
 
-export function CurrentSummaryTable() {
+export function CurrentSummaryTable2() {
   const table = useTable({ defaultOrderBy: 'orderNumber' });
 
   const router = useRouter();
@@ -207,14 +198,15 @@ export function CurrentSummaryTable() {
                     table.page * table.rowsPerPage,
                     table.page * table.rowsPerPage + table.rowsPerPage
                   )
-                  .map((row) => (
-                    <OrderTableRow
+                  .map((row, index) => (
+                    <CreditSummaryTable
                       key={row.id}
                       row={row}
                       selected={table.selected.includes(row.id)}
                       onSelectRow={() => table.onSelectRow(row.id)}
                       onDeleteRow={() => handleDeleteRow(row.id)}
                       onViewRow={() => handleViewRow(row.id)}
+                      emailStatus={row.emailStatus[index]}
                     />
                   ))}
 

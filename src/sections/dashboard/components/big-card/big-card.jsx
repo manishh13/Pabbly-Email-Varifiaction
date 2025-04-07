@@ -1,7 +1,7 @@
 import React from 'react';
 
 // import { Add, PlayCircleOutline } from '@mui/icons-material';
-import { Box, Card, Button, Typography, CardContent } from '@mui/material';
+import { Box, Card, Button, Tooltip, Typography, CardContent } from '@mui/material';
 
 import { Iconify } from '../../../../components/iconify';
 
@@ -13,6 +13,7 @@ const BigCard = ({
   img,
   buttonVisibility,
   bigcardtitle,
+  tooltipTitle,
 }) => (
   <Card
     sx={{
@@ -39,45 +40,49 @@ const BigCard = ({
         ))}
       </ul>
       <Box sx={{ display: `${buttonVisibility}` }}>
-        <Button
-          variant="outlined"
-          size="large"
-          color="primary"
-          startIcon={
-            <Iconify icon="heroicons:plus-circle-16-solid" style={{ width: 18, height: 18 }} />
-          }
-          endIcon={
-            <Iconify
-              icon="material-symbols:keyboard-arrow-down-rounded"
-              style={{ width: 24, height: 24, display: `${visibility}` }}
-            />
-          }
-        >
-          {buttontitle}
-        </Button>
+        <Tooltip title={tooltipTitle} arrow placement="top">
+          <Button
+            variant="outlined"
+            size="large"
+            color="primary"
+            startIcon={
+              <Iconify icon="heroicons:plus-circle-16-solid" style={{ width: 18, height: 18 }} />
+            }
+            endIcon={
+              <Iconify
+                icon="material-symbols:keyboard-arrow-down-rounded"
+                style={{ width: 24, height: 24, display: `${visibility}` }}
+              />
+            }
+          >
+            {buttontitle}
+          </Button>
+        </Tooltip>
       </Box>
     </CardContent>
 
     {/* Right Section */}
-    <Box
-      sx={{
-        width: '35%',
-        borderRadius: 2,
-        background: '#f5f5f5',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        position: 'relative',
-        overflow: 'hidden',
-      }}
-    >
-      <img
-        src={img}
-        alt="Email Verification Video"
-        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-      />
-      {/* <PlayCircleOutline sx={{ position: 'absolute', fontSize: 50, color: 'white' }} /> */}
-    </Box>
+    <Tooltip title="Click to watch tutorial." arrow placement="top">
+      <Box
+        sx={{
+          width: '35%',
+          borderRadius: 2,
+          background: '#f5f5f5',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
+        <img
+          src={img}
+          alt="Email Verification Video"
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+        />
+        {/* <PlayCircleOutline sx={{ position: 'absolute', fontSize: 50, color: 'white' }} /> */}
+      </Box>
+    </Tooltip>
   </Card>
 );
 

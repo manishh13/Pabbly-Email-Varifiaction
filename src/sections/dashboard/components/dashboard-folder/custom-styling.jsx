@@ -140,10 +140,12 @@ import {
   Box,
   List,
   Menu,
+  Divider,
+  Tooltip,
   MenuItem,
   IconButton,
   Typography,
-  ListItemText,
+  ToggleButton,
   ListItemButton,
 } from '@mui/material';
 
@@ -157,7 +159,6 @@ const folders = [
   'Pabbly Email Marketing',
   'Pabbly Form Builder',
   'Pabbly Hook',
-  'Trash',
 ];
 
 const DashboardFolders = () => {
@@ -179,28 +180,68 @@ const DashboardFolders = () => {
   return (
     <Box>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-        <Typography variant="h6">Folders</Typography>
-        <Iconify />
+        <Tooltip
+          title="You can create folders and manage connections within them."
+          arrow
+          placement="top"
+        >
+          <Typography variant="h6">Folders</Typography>
+        </Tooltip>
+        <Tooltip title="Create more folder." arrow placement="top">
+          <ToggleButton
+            size="large"
+            color="primary"
+            sx={{
+              width: 36,
+              height: 36,
+              bgcolor: 'primary.main',
+              color: 'primary.contrastText',
+              '&:hover': { bgcolor: 'primary.dark' },
+            }}
+          >
+            <Iconify icon="qlementine-icons:plus-16" />
+          </ToggleButton>
+        </Tooltip>
       </Box>
+      <Divider />
       <List component="nav">
         {folders.map((folder, index) => (
           <Box
             key={index}
             sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
           >
-            <ListItemButton onClick={() => handleClick(index)}>
-              <ListItemText primary={folder} />
+            <ListItemButton
+              onClick={() => handleClick(index)}
+              sx={{ display: 'flex', justifyContent: 'space-between' }}
+            >
+              <Typography variant="span" sx={{ fontSize: '14px' }}>
+                {folder}{' '}
+                <Typography variant="span" sx={{ color: 'gray', ml: 1 }}>
+                  (0)
+                </Typography>
+              </Typography>
+              {/* <ListItemText primary={folder} /> */}
               {open === index ? (
-                <Iconify icon="pepicons-pop:dots-y" style={{ width: 18, height: 18 }} />
+                <Iconify icon="heroicons:ellipsis-vertical-solid" color="gray" />
               ) : (
-                <Iconify icon="pepicons-pop:dots-y" style={{ width: 18, height: 18 }} />
+                <Iconify icon="heroicons:ellipsis-vertical-solid" color="gray" />
               )}
             </ListItemButton>
             <IconButton onClick={handleMenuOpen}>{/* <MoreVert /> */}</IconButton>
           </Box>
         ))}
       </List>
-      <Menu anchorEl={menuAnchor} open={Boolean(menuAnchor)} onClose={handleMenuClose}>
+      <Divider />
+      <ListItemButton>
+        <Typography variant="span" sx={{ fontSize: '14px' }}>
+          Trash
+          <Typography variant="span" sx={{ color: 'gray', ml: 1 }}>
+            (0)
+          </Typography>
+        </Typography>
+      </ListItemButton>
+
+      <Menu>
         <MenuItem onClick={handleMenuClose}>Rename</MenuItem>
         <MenuItem onClick={handleMenuClose}>Share</MenuItem>
         <MenuItem onClick={handleMenuClose} sx={{ color: 'error.main' }}>
