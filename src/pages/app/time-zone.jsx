@@ -25,26 +25,6 @@ export default function Page() {
       />
       <CurrentSummaryView />
       <TimeZoneCard />
-
-      {/* <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-around',
-
-          gap: 3,
-        }}
-      >
-        <BigCard
-          Items={items}
-          style={style}
-          buttontitle="Varify Email"
-          visibility="block"
-          img={imgPath}
-        />
-
-        <APIKeyGenerate />
-      </Box> */}
     </DashboardContent>
   );
 }

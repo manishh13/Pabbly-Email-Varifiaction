@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import i18next from 'i18next';
 
 import { allLangs } from '../all-langs';

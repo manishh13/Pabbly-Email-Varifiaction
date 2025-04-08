@@ -16,6 +16,7 @@ import { PRODUCT_CATEGORY_GROUP_OPTIONS } from 'src/_mock';
 
 // import { toast } from 'src/components/snackbar';
 import { Form, Field } from 'src/components/hook-form';
+import LearnMoreTypography from 'src/components/learn-more/learn-more';
 
 // ----------------------------------------------------------------------
 
@@ -135,14 +136,15 @@ export function TimeZoneCard({ currentProduct, Title = 'Save' }) {
       <Divider />
 
       <Stack spacing={3} sx={{ p: 3 }}>
-        <Field.Text name="name" label="Select Time Zone" />
+        <Field.Text name="timezone" label="Select Time Zone" />
         <Typography variant="span" sx={{ color: 'text.secondary', fontSize: '12px' }}>
           Select the time zone that matches your current location.
+          <LearnMoreTypography sx={{ fontSize: '12px' }} />
         </Typography>
 
         <Box>
           <Button variant="contained" color="primary">
-            {Title}
+            s{Title}
           </Button>
         </Box>
 

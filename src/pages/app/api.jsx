@@ -75,7 +75,7 @@ export default function Page() {
         visibility="none"
       />
       <CurrentSummaryView />
-      <APIComponent />;
+      <APIComponent />
     </DashboardContent>
   );
 }

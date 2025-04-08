@@ -36,8 +36,9 @@ import {
   TablePaginationCustom,
 } from 'src/components/table';
 
-import { OrderTableRow } from '../../../order/order-table-row';
-import { OrderTableToolbar } from '../../../order/order-table-toolbar';
+import { TeamMemberRow } from 'src/sections/order/team-member-row';
+import { TeamMemberToolbar } from 'src/sections/order/team-member-toolbar';
+
 import { OrderTableFiltersResult } from '../../../order/order-table-filters-result';
 
 // ----------------------------------------------------------------------
@@ -45,18 +46,10 @@ import { OrderTableFiltersResult } from '../../../order/order-table-filters-resu
 const STATUS_OPTIONS = [{ value: 'all', label: 'All' }, ...ORDER_STATUS_OPTIONS];
 
 const TABLE_HEAD = [
-  { id: 'orderNumber', label: 'Status/Name/Date', width: 88 },
-  { id: 'name', label: 'Number of Emails/Credits Consumed' },
-  { id: 'createdAt', label: 'Action', width: 140 },
-  // {
-  //   id: 'totalQuantity',
-  //   label: 'Items',
-  //   width: 120,
-  //   align: 'center',
-  // },
-  // { id: 'totalAmount', label: 'Price', width: 140 },
-  // { id: 'status', label: 'Status', width: 110 },
-  // { id: '', width: 88 },
+  { id: 'orderNumber', label: 'Shared On', width: '34%' },
+  { id: 'name', label: 'Team Member Email', width: '34%' },
+  { width: '20%' },
+  { id: 'createdAt', label: 'Permission Type', width: '34%' },
 ];
 
 // ----------------------------------------------------------------------
@@ -138,62 +131,17 @@ export function TeamMemberTable() {
 
   return (
     <>
-      {/* <CustomBreadcrumbs
-        heading="List" links=
-        {[
-          { name: 'Dashboard', href: paths.dashboard.root },
-          { name: 'Order', href: paths.dashboard.order.root },
-          { name: 'List' },
-        ]}
-        sx={{ mb: { xs: 3, md: 5 } }}
-        /> */}
       <Card>
         <CardHeader
-          title="Email Verification Logs"
-          subheader="View all email verification activities, including type, date, summary, and credit usage. Use filters or search to find specific logs."
+          title="Team Members"
+          subheader="View and manage team members with assigned permissions. Add new members, filter access, and update roles efficiently.
+"
           sx={{ mb: 3 }}
         />
 
         <Divider />
-        {/* <Tabs
-          value={filters.state.status}
-          onChange={handleFilterStatus}
-          sx={{
-            px: 2.5,
-            boxShadow: (theme) =>
-              `inset 0 -2px 0 0 ${varAlpha(theme.vars.palette.grey['500Channel'], 0.08)}`,
-          }}
-        >
-          {STATUS_OPTIONS.map((tab) => (
-            <Tab
-              key={tab.value}
-              iconPosition="end"
-              value={tab.value}
-              label={tab.label}
-              icon={
-                <Label
-                  variant={
-                    ((tab.value === 'all' || tab.value === filters.state.status) && 'filled') ||
-                    'soft'
-                  }
-                  color={
-                    (tab.value === 'verified' && 'success') ||
-                    (tab.value === 'processing' && 'primary') ||
-                    (tab.value === 'uploading' && 'warning') ||
-                    (tab.value === 'unverify' && 'error') ||
-                    'default'
-                  }
-                >
-                  {['completed', 'pending', 'cancelled', 'refunded'].includes(tab.value)
-                    ? tableData.filter((user) => user.status === tab.value).length
-                    : tableData.length}
-                </Label>
-              }
-            />
-          ))}
-        </Tabs> */}
 
-        <OrderTableToolbar
+        <TeamMemberToolbar
           filters={filters}
           onResetPage={table.onResetPage}
           dateError={dateError}
@@ -252,7 +200,7 @@ export function TeamMemberTable() {
                     table.page * table.rowsPerPage + table.rowsPerPage
                   )
                   .map((row) => (
-                    <OrderTableRow
+                    <TeamMemberRow
                       key={row.id}
                       row={row}
                       selected={table.selected.includes(row.id)}

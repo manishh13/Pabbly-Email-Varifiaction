@@ -1,7 +1,9 @@
 import dayjs from 'dayjs';
 import { useCallback } from 'react';
+// eslint-disable-next-line import/no-unresolved
 import { useTranslation } from 'react-i18next';
 
+// eslint-disable-next-line import/no-unresolved
 import { toast } from 'src/components/snackbar';
 
 import { allLangs } from './all-langs';

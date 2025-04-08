@@ -145,15 +145,6 @@ export function OrderListView() {
 
   return (
     <>
-      {/* <CustomBreadcrumbs
-        heading="List" links=
-        {[
-          { name: 'Dashboard', href: paths.dashboard.root },
-          { name: 'Order', href: paths.dashboard.order.root },
-          { name: 'List' },
-        ]}
-        sx={{ mb: { xs: 3, md: 5 } }}
-        /> */}
       <Card>
         <CardHeader
           title="Home"

@@ -1,6 +1,10 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import i18next from 'i18next';
+// eslint-disable-next-line import/no-unresolved
 import resourcesToBackend from 'i18next-resources-to-backend';
+// eslint-disable-next-line import/no-unresolved
 import LanguageDetector from 'i18next-browser-languagedetector';
+// eslint-disable-next-line import/no-unresolved
 import { initReactI18next, I18nextProvider as Provider } from 'react-i18next';
 
 import { localStorageGetItem } from 'src/utils/storage-available';

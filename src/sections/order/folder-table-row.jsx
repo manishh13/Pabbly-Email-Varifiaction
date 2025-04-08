@@ -1,12 +1,14 @@
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
 import MenuList from '@mui/material/MenuList';
 import Collapse from '@mui/material/Collapse';
 import MenuItem from '@mui/material/MenuItem';
 import TableRow from '@mui/material/TableRow';
 import Checkbox from '@mui/material/Checkbox';
 import TableCell from '@mui/material/TableCell';
+import IconButton from '@mui/material/IconButton';
 import ListItemText from '@mui/material/ListItemText';
 
 import { useBoolean } from 'src/hooks/use-boolean';
@@ -15,22 +17,24 @@ import { fDateTime } from 'src/utils/format-time';
 
 // import { fCurrency } from 'src/utils/format-number';
 
-import { Typography } from '@mui/material';
+import { Tooltip, Typography } from '@mui/material';
 
-import { Label } from 'src/components/label';
 import { Iconify } from 'src/components/iconify';
 // import { ConfirmDialog } from 'src/components/custom-dialog';
 import { usePopover, CustomPopover } from 'src/components/custom-popover';
 
 // ----------------------------------------------------------------------
 
-export function CreditSummaryTable({
+export function FolderTableRow({
   row,
   selected,
   onViewRow,
   onSelectRow,
-
-  emailStatus,
+  onDeleteRow,
+  buttonTitle,
+  verificationStatus,
+  toolTitle,
+  ellipsisTooltipTitle,
 }) {
   const confirm = useBoolean();
 
@@ -49,39 +53,51 @@ export function CreditSummaryTable({
       </TableCell>
 
       <TableCell>
-        <Label
-          variant="soft"
-          color={
-            (emailStatus === 'Email Credits Purchased' && 'success') ||
-            (emailStatus === 'Bulk Verification' && 'error') ||
-            (emailStatus === 'Single Verification' && 'error') ||
-            'default'
-          }
-        >
-          {emailStatus}
-        </Label>
-
-        <Typography variant="body2" sx={{ color: 'text.disabled' }}>
-          {fDateTime(row.createdAt)}
-        </Typography>
+        <Typography variant="body2">{fDateTime(row.createdAt)}</Typography>
       </TableCell>
 
       <TableCell>
         <Typography varirent="span" sx={{ fontSize: '14px', fontWeight: 'normal' }}>
-          List 1
+          neeraj.agarwal@pabbly.com
         </Typography>
         <Typography
-          varirent="span"
+          varient="span"
+          color="inherit"
+          onClick={onViewRow}
+          underline="always"
           sx={{ fontSize: '14px', fontWeight: 'normal', color: 'text.disabled' }}
         >
-          Pabbly Connect
+          Company A Folder
         </Typography>
       </TableCell>
-
       <TableCell>
         <Typography varirent="span" sx={{ fontSize: '14px', fontWeight: 'normal' }}>
-          -9
+          Write Permission
         </Typography>
+      </TableCell>
+      <TableCell />
+      <TableCell align="right" sx={{ px: 1, whiteSpace: 'nowrap' }}>
+        <Tooltip title={toolTitle} arrow placement="top">
+          <Button variant="outlined" color="primary">
+            {buttonTitle}
+          </Button>
+        </Tooltip>
+
+        <Tooltip title={ellipsisTooltipTitle} arrow placement="top">
+          {verificationStatus === 'Uploading' || verificationStatus === 'Processing' ? (
+            <IconButton
+              // color={popover.open ? 'inherit' : 'default'}
+              disabled
+              onClick={popover.onOpen}
+            >
+              <Iconify icon="eva:more-vertical-fill" />
+            </IconButton>
+          ) : (
+            <IconButton color={popover.open ? 'inherit' : 'default'} onClick={popover.onOpen}>
+              <Iconify icon="eva:more-vertical-fill" />
+            </IconButton>
+          )}
+        </Tooltip>
       </TableCell>
     </TableRow>
   );

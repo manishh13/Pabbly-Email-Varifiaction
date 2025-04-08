@@ -16,6 +16,7 @@ import { PRODUCT_CATEGORY_GROUP_OPTIONS } from 'src/_mock';
 
 // import { toast } from 'src/components/snackbar';
 import { Form, Field } from 'src/components/hook-form';
+import LearnMoreTypography from 'src/components/learn-more/learn-more';
 
 // ----------------------------------------------------------------------
 
@@ -137,13 +138,13 @@ export function APIKeyGenerate({ currentProduct, Title = 'Generate API Keys' }) 
       <Stack spacing={3} sx={{ p: 3 }}>
         <Field.Text name="name" label="API Key" />
         <Typography variant="span" sx={{ color: 'text.secondary', fontSize: '12px' }}>
-          Use the Copy button to securely copy it. Keep it private and dont share with others. Learn
-          more
+          Use the Copy button to securely copy it. Keep it private and dont share with others.
+          <LearnMoreTypography sx={{ fontSize: '12px' }} />
         </Typography>
         <Field.Text name="name" label="Secret Key" />
         <Typography variant="span" sx={{ color: 'text.secondary', fontSize: '12px' }}>
-          Use the Copy button to securely copy it. Keep it private and dont share with others. Learn
-          more
+          Use the Copy button to securely copy it. Keep it private and dont share with others.
+          <LearnMoreTypography sx={{ fontSize: '12px' }} />
         </Typography>
         <Box>
           <Button variant="contained" color="primary">

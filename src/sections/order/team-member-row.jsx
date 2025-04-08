@@ -7,6 +7,7 @@ import MenuItem from '@mui/material/MenuItem';
 import TableRow from '@mui/material/TableRow';
 import Checkbox from '@mui/material/Checkbox';
 import TableCell from '@mui/material/TableCell';
+import IconButton from '@mui/material/IconButton';
 import ListItemText from '@mui/material/ListItemText';
 
 import { useBoolean } from 'src/hooks/use-boolean';
@@ -17,20 +18,22 @@ import { fDateTime } from 'src/utils/format-time';
 
 import { Typography } from '@mui/material';
 
-import { Label } from 'src/components/label';
 import { Iconify } from 'src/components/iconify';
 // import { ConfirmDialog } from 'src/components/custom-dialog';
 import { usePopover, CustomPopover } from 'src/components/custom-popover';
 
 // ----------------------------------------------------------------------
 
-export function CreditSummaryTable({
+export function TeamMemberRow({
   row,
   selected,
   onViewRow,
   onSelectRow,
-
-  emailStatus,
+  onDeleteRow,
+  buttonTitle,
+  verificationStatus,
+  toolTitle,
+  ellipsisTooltipTitle,
 }) {
   const confirm = useBoolean();
 
@@ -49,39 +52,28 @@ export function CreditSummaryTable({
       </TableCell>
 
       <TableCell>
-        <Label
-          variant="soft"
-          color={
-            (emailStatus === 'Email Credits Purchased' && 'success') ||
-            (emailStatus === 'Bulk Verification' && 'error') ||
-            (emailStatus === 'Single Verification' && 'error') ||
-            'default'
-          }
-        >
-          {emailStatus}
-        </Label>
-
-        <Typography variant="body2" sx={{ color: 'text.disabled' }}>
-          {fDateTime(row.createdAt)}
-        </Typography>
+        <Typography variant="body2">{fDateTime(row.createdAt)}</Typography>
       </TableCell>
 
       <TableCell>
         <Typography varirent="span" sx={{ fontSize: '14px', fontWeight: 'normal' }}>
-          List 1
+          neeraj.agarwal@pabbly.com
         </Typography>
         <Typography
           varirent="span"
           sx={{ fontSize: '14px', fontWeight: 'normal', color: 'text.disabled' }}
         >
-          Pabbly Connect
+          Company A
         </Typography>
       </TableCell>
-
-      <TableCell>
+      <TableCell />
+      <TableCell sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
         <Typography varirent="span" sx={{ fontSize: '14px', fontWeight: 'normal' }}>
-          -9
+          Write Access
         </Typography>
+        <IconButton color={popover.open ? 'inherit' : 'default'} onClick={popover.onOpen}>
+          <Iconify icon="eva:more-vertical-fill" />
+        </IconButton>
       </TableCell>
     </TableRow>
   );

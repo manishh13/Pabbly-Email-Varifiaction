@@ -64,6 +64,7 @@ const emailStatus = [
   'Single Verification',
   'Email Credits Purchased',
 ];
+const activityLogAction = ['Created', 'Delete', 'Created', 'Updated', 'Updated'];
 const ITEMS = [...Array(3)].map((_, index) => ({
   id: _mock.id(index),
   sku: `16H9UR${index}`,
@@ -127,6 +128,7 @@ export const _orders = [...Array(5)].map((_, index) => {
     totalAmount,
     totalQuantity,
     verificationStatus,
+    activityLogAction,
     emailStatus,
     buttonTitle,
     shippingAddress: {

@@ -18,16 +18,16 @@ const BigCard = ({
   <Card
     sx={{
       display: 'flex',
-
+      p: 2,
       borderRadius: 2,
       boxShadow: 3,
-      justifyContent: 'space-between',
+
       alignItems: 'center',
-      gap: 3,
+      height: 'auto',
     }}
   >
     {/* Left Section */}
-    <CardContent sx={{ width: '60%', display: 'flex', flexDirection: 'column  ', gap: 2 }}>
+    <CardContent sx={{ display: 'flex', flexDirection: 'column ', gap: 1, width: '60%' }}>
       <Typography variant="h6">{bigcardtitle}</Typography>
       <Typography variant="body2" color="text.secondary">
         Please adhere to the following guidelines when uploading your CSV file:
@@ -65,21 +65,19 @@ const BigCard = ({
     <Tooltip title="Click to watch tutorial." arrow placement="top">
       <Box
         sx={{
-          width: '35%',
           borderRadius: 2,
-          background: '#f5f5f5',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          position: 'relative',
+          // background: '#f5f5f5',
+          widht: '35%',
+
           overflow: 'hidden',
         }}
       >
         <img
-          src={img}
+          src="../../../../../public/assets/images/big-card-thumbnail/play-icon (1).svg"
           alt="Email Verification Video"
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          style={{ position: 'absolute' }}
         />
+        <img src={img} alt="Email Verification Video" style={{ borderRadius: 2 }} />
         {/* <PlayCircleOutline sx={{ position: 'absolute', fontSize: 50, color: 'white' }} /> */}
       </Box>
     </Tooltip>

@@ -24,13 +24,16 @@ import { usePopover, CustomPopover } from 'src/components/custom-popover';
 
 // ----------------------------------------------------------------------
 
-export function CreditSummaryTable({
+export function ActivityTableRow({
   row,
   selected,
   onViewRow,
   onSelectRow,
-
-  emailStatus,
+  onDeleteRow,
+  buttonTitle,
+  verificationStatus,
+  toolTitle,
+  ellipsisTooltipTitle,
 }) {
   const confirm = useBoolean();
 
@@ -52,13 +55,13 @@ export function CreditSummaryTable({
         <Label
           variant="soft"
           color={
-            (emailStatus === 'Email Credits Purchased' && 'success') ||
-            (emailStatus === 'Bulk Verification' && 'error') ||
-            (emailStatus === 'Single Verification' && 'error') ||
+            (verificationStatus === 'Created' && 'success') ||
+            (verificationStatus === 'Updated' && 'warning') ||
+            (verificationStatus === 'Delete' && 'error') ||
             'default'
           }
         >
-          {emailStatus}
+          {verificationStatus}
         </Label>
 
         <Typography variant="body2" sx={{ color: 'text.disabled' }}>
@@ -68,19 +71,30 @@ export function CreditSummaryTable({
 
       <TableCell>
         <Typography varirent="span" sx={{ fontSize: '14px', fontWeight: 'normal' }}>
-          List 1
+          Hardik Pradhan
         </Typography>
         <Typography
           varirent="span"
           sx={{ fontSize: '14px', fontWeight: 'normal', color: 'text.disabled' }}
         >
-          Pabbly Connect
+          hardik.pradhan@pabbly.com
+        </Typography>
+      </TableCell>
+      <TableCell>
+        <Typography varirent="span" sx={{ fontSize: '14px', fontWeight: 'normal' }}>
+          Dashboard
+        </Typography>
+        <Typography
+          varirent="span"
+          sx={{ fontSize: '14px', fontWeight: 'normal', color: 'text.disabled' }}
+        >
+          USER
         </Typography>
       </TableCell>
 
-      <TableCell>
-        <Typography varirent="span" sx={{ fontSize: '14px', fontWeight: 'normal' }}>
-          -9
+      <TableCell sx={{ px: 1, whiteSpace: 'nowrap' }}>
+        <Typography varirent="span" color="primary" sx={{ fontSize: '14px', fontWeight: 'normal' }}>
+          67764b1fb9e6371d99c28a37
         </Typography>
       </TableCell>
     </TableRow>

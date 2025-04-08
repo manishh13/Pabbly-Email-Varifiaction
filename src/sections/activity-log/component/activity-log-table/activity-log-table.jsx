@@ -36,7 +36,8 @@ import {
   TablePaginationCustom,
 } from 'src/components/table';
 
-import { OrderTableRow } from '../../../order/order-table-row';
+import { ActivityTableRow } from 'src/sections/order/activity-table-row';
+
 import { OrderTableToolbar } from '../../../order/order-table-toolbar';
 import { OrderTableFiltersResult } from '../../../order/order-table-filters-result';
 
@@ -45,18 +46,10 @@ import { OrderTableFiltersResult } from '../../../order/order-table-filters-resu
 const STATUS_OPTIONS = [{ value: 'all', label: 'All' }, ...ORDER_STATUS_OPTIONS];
 
 const TABLE_HEAD = [
-  { id: 'orderNumber', label: 'Status/Name/Date', width: 88 },
-  { id: 'name', label: 'Number of Emails/Credits Consumed' },
-  { id: 'createdAt', label: 'Action', width: 140 },
-  // {
-  //   id: 'totalQuantity',
-  //   label: 'Items',
-  //   width: 120,
-  //   align: 'center',
-  // },
-  // { id: 'totalAmount', label: 'Price', width: 140 },
-  // { id: 'status', label: 'Status', width: 110 },
-  // { id: '', width: 88 },
+  { id: 'orderNumber', label: 'Action/Date' },
+  { id: 'name', label: 'Actor' },
+  { id: 'createdAt', label: 'Section/Source' },
+  { id: 'createdAt', label: 'Activity Data' },
 ];
 
 // ----------------------------------------------------------------------
@@ -138,65 +131,22 @@ export function ActivityLogTable() {
 
   return (
     <>
-      {/* <CustomBreadcrumbs
-        heading="List" links=
-        {[
-          { name: 'Dashboard', href: paths.dashboard.root },
-          { name: 'Order', href: paths.dashboard.order.root },
-          { name: 'List' },
-        ]}
-        sx={{ mb: { xs: 3, md: 5 } }}
-        /> */}
       <Card>
         <CardHeader
-          title="Email Verification Logs"
-          subheader="View all email verification activities, including type, date, summary, and credit usage. Use filters or search to find specific logs."
+          title="Activity Log"
+          subheader="Track all activities in your Pabbly Email Verification, including user actions and API requests. Monitor created, updated, and deleted actions to ensure transparency and security.
+
+"
           sx={{ mb: 3 }}
         />
 
         <Divider />
-        {/* <Tabs
-          value={filters.state.status}
-          onChange={handleFilterStatus}
-          sx={{
-            px: 2.5,
-            boxShadow: (theme) =>
-              `inset 0 -2px 0 0 ${varAlpha(theme.vars.palette.grey['500Channel'], 0.08)}`,
-          }}
-        >
-          {STATUS_OPTIONS.map((tab) => (
-            <Tab
-              key={tab.value}
-              iconPosition="end"
-              value={tab.value}
-              label={tab.label}
-              icon={
-                <Label
-                  variant={
-                    ((tab.value === 'all' || tab.value === filters.state.status) && 'filled') ||
-                    'soft'
-                  }
-                  color={
-                    (tab.value === 'verified' && 'success') ||
-                    (tab.value === 'processing' && 'primary') ||
-                    (tab.value === 'uploading' && 'warning') ||
-                    (tab.value === 'unverify' && 'error') ||
-                    'default'
-                  }
-                >
-                  {['completed', 'pending', 'cancelled', 'refunded'].includes(tab.value)
-                    ? tableData.filter((user) => user.status === tab.value).length
-                    : tableData.length}
-                </Label>
-              }
-            />
-          ))}
-        </Tabs> */}
 
         <OrderTableToolbar
           filters={filters}
           onResetPage={table.onResetPage}
           dateError={dateError}
+          buttonName="filter"
         />
 
         {canReset && (
@@ -251,14 +201,15 @@ export function ActivityLogTable() {
                     table.page * table.rowsPerPage,
                     table.page * table.rowsPerPage + table.rowsPerPage
                   )
-                  .map((row) => (
-                    <OrderTableRow
+                  .map((row, index) => (
+                    <ActivityTableRow
                       key={row.id}
                       row={row}
                       selected={table.selected.includes(row.id)}
                       onSelectRow={() => table.onSelectRow(row.id)}
                       onDeleteRow={() => handleDeleteRow(row.id)}
                       onViewRow={() => handleViewRow(row.id)}
+                      verificationStatus={row.activityLogAction[index]}
                     />
                   ))}
 

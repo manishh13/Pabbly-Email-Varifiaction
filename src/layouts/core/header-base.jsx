@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
+import { ToggleButton } from '@mui/material';
 import { styled, useTheme } from '@mui/material/styles';
 
 import { paths } from 'src/routes/paths';
@@ -12,6 +13,7 @@ import { CONFIG } from 'src/config-global';
 import { varAlpha } from 'src/theme/styles';
 
 import { Logo } from 'src/components/logo';
+import { Iconify } from 'src/components/iconify';
 
 import { HeaderSection } from './header-section';
 import { Searchbar } from '../components/searchbar';
@@ -156,6 +158,9 @@ export function HeaderBase({
               <Button variant="contained" color="error">
                 Upgrade
               </Button>
+              <ToggleButton sx={{ width: '40px', height: '40px', p: 1 }}>
+                <Iconify icon="garden:grid-3x3-fill-16" sx={{ width: '22px', height: '22px' }} />
+              </ToggleButton>
 
               {/* -- Account drawer -- */}
               {account && <AccountDrawer data-slot="account" data={data?.account} />}
