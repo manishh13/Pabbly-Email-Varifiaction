@@ -23,8 +23,7 @@ import { listItemes } from 'src/sections/dashboard/components/dashboard-big-card
 
 const { items, style } = listItemes;
 
-const imgPath =
-  '../../public/assets/images/big-card-thumbnail/email-verication-video-thumbnail.jpg';
+const imgPath = '/assets/images/big-card-thumbnail/email-verication-video-thumbnail.jpg';
 
 // ----------------------------------------------------------------------
 
