@@ -20,8 +20,7 @@ import { ActivityLogTable } from '../activity-log-table/activity-log-table';
 
 const { items, style } = listItemes;
 
-const imgPath =
-  '../../public/assets/images/big-card-thumbnail/email-verication-video-thumbnail.jpg';
+const imgPath = '/assets/images/big-card-thumbnail/email-verication-video-thumbnail.jpg';
 
 // ----------------------------------------------------------------------
 

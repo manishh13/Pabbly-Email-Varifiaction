@@ -181,24 +181,6 @@ export function APIKeyGenerate({ currentProduct, Title = 'Generate API Keys' }) 
               {Title}
             </Button>
           </Box>
-
-          {/* <Stack spacing={1.5}>
-          <Typography variant="subtitle2">Content</Typography>
-          <Field.Editor name="description" sx={{ maxHeight: 480 }} />
-        </Stack>
-
-        <Stack spacing={1.5}>
-          <Typography variant="subtitle2">Images</Typography>
-          <Field.Upload
-            multiple
-            thumbnail
-            name="images"
-            maxSize={3145728}
-            onRemove={handleRemoveFile}
-            onRemoveAll={handleRemoveAllFiles}
-            onUpload={() => console.info('ON UPLOAD')}
-          />
-        </Stack> */}
         </Stack>
       </Card>
     </Box>

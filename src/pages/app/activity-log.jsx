@@ -5,7 +5,7 @@ import { ActivitySummaryTab } from 'src/sections/activity-log/component/activiy-
 
 import { activity_log_listItemes } from '../../sections/dashboard/components/dashboard-big-card-list-items/dashboard-big-card-list-items';
 
-const imgPath = '../../public/assets/images/big-card-thumbnail/activity-log.png';
+const imgPath = '/assets/images/big-card-thumbnail/activity-log.png';
 const { items, style } = activity_log_listItemes;
 // ----------------------------------------------------------------------
 

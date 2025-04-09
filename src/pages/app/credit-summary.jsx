@@ -62,9 +62,7 @@ export default function Page() {
           tooltipTitle="Number of emails lists uploaded in your account."
         />
       </Box>
-      {/* <OrderListView /> */}
-      {/* <CurrentSummaryTable />
-       */}
+
       <CurrentSummaryTable2 />
     </DashboardContent>
   );

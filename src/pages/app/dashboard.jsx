@@ -15,7 +15,7 @@ import { OrderListView } from 'src/sections/dashboard/components/dashboard-table
 
 import { listItemes } from '../../sections/dashboard/components/dashboard-big-card-list-items/dashboard-big-card-list-items';
 
-const imgPath = './public/assets/images/big-card-thumbnail/email-verication-video-thumbnail.jpg';
+const imgPath = 'assets/images/big-card-thumbnail/email-verication-video-thumbnail.jpg';
 const metadata = { title: `Dashboard | Pabbly Email Varification - ${CONFIG.site.name}` };
 const { items, style } = listItemes;
 export default function Page() {
