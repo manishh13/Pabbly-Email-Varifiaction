@@ -146,21 +146,43 @@ export function HeaderBase({
                   href={paths.faqs}
                   component={RouterLink}
                   color="inherit"
-                  sx={{ typography: 'subtitle2' }}
+                  sx={{ typography: 'subtitle2', display: { xs: 'none', sm: 'block' } }} // Hide on mobile
                 >
                   Need help?
                 </Link>
               )}
 
               {/* -- Searchbar -- */}
-              {searchbar && <Searchbar data-slot="searchbar" data={data?.nav} />}
+              {searchbar && (
+                <Searchbar
+                  data-slot="searchbar"
+                  data={data?.nav}
+                  placeholder="Search..." // Placeholder text
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    width: { xs: '40px', sm: 'auto' }, // Set width for mobile
+                    '& input': {
+                      display: { xs: 'none', sm: 'block' }, // Hide input on mobile
+                      '&::placeholder': {
+                        color: 'transparent', // Hide placeholder text
+                      },
+                    },
+                    '& .MuiInputBase-root': {
+                      display: { xs: 'none', sm: 'flex' }, // Hide the input field on mobile
+                    },
+                  }}
+                />
+              )}
 
               <Button variant="contained" color="error">
                 Upgrade
               </Button>
-              <ToggleButton sx={{ width: '40px', height: '40px', p: 1 }}>
-                <Iconify icon="garden:grid-3x3-fill-16" sx={{ width: '22px', height: '22px' }} />
-              </ToggleButton>
+              {menuButton && (
+                <ToggleButton sx={{ width: '40px', height: '40px', p: 1 }}>
+                  <Iconify icon="garden:grid-3x3-fill-16" sx={{ width: '22px', height: '22px' }} />
+                </ToggleButton>
+              )}
 
               {/* -- Account drawer -- */}
               {account && <AccountDrawer data-slot="account" data={data?.account} />}
@@ -187,7 +209,6 @@ export function HeaderBase({
                 </Button>
               )}
             </Box>
-
             {slots?.rightAreaEnd}
           </>
         ),

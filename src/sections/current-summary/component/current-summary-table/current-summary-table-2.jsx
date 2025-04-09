@@ -45,9 +45,9 @@ import { OrderTableFiltersResult } from '../../../order/order-table-filters-resu
 const STATUS_OPTIONS = [{ value: 'all', label: 'All' }, ...ORDER_STATUS_OPTIONS];
 
 const TABLE_HEAD = [
-  { id: 'orderNumber', label: 'Status/Date' },
-  { id: 'name', label: 'Verification Summary' },
-  { id: 'createdAt', label: 'Credits' },
+  { id: 'orderNumber', label: 'Status/Date', widht: '660.86px', align: 'left' },
+  { id: 'name', label: 'Verification Summary', widht: '447.73px', align: 'left' },
+  { id: 'createdAt', label: 'Credits', widht: '308.41px', align: 'right' },
 ];
 
 // ----------------------------------------------------------------------

@@ -18,6 +18,14 @@ import { PRODUCT_CATEGORY_GROUP_OPTIONS } from 'src/_mock';
 import { Form, Field } from 'src/components/hook-form';
 import LearnMoreTypography from 'src/components/learn-more/learn-more';
 
+import BigCard from 'src/sections/dashboard/components/big-card/big-card';
+import { listItemes } from 'src/sections/dashboard/components/dashboard-big-card-list-items/dashboard-big-card-list-items';
+
+const { items, style } = listItemes;
+
+const imgPath =
+  '../../public/assets/images/big-card-thumbnail/email-verication-video-thumbnail.jpg';
+
 // ----------------------------------------------------------------------
 
 export const NewProductSchema = zod.object({
@@ -43,7 +51,7 @@ export const NewProductSchema = zod.object({
 
 // ----------------------------------------------------------------------
 
-export function TimeZoneCard({ currentProduct, Title = 'Save' }) {
+export function APIKeyGenerate({ currentProduct, Title = 'Generate API Keys' }) {
   const router = useRouter();
 
   const [includeTaxes, setIncludeTaxes] = useState(false);
@@ -130,27 +138,51 @@ export function TimeZoneCard({ currentProduct, Title = 'Save' }) {
   }, []);
 
   const renderDetails = (
-    <Card>
-      <CardHeader title="Time Zone" sx={{ mb: 3 }} />
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+      <BigCard
+        Items={items}
+        style={style}
+        buttontitle="Verify Email"
+        visibility="none"
+        img={imgPath}
+        buttonVisibility="none"
+        bigcardtitle="Points To Remember"
+        secondaryTextVisibility="none"
+      />
 
-      <Divider />
+      <Card>
+        <CardHeader title="API" sx={{ mb: 3 }} />
 
-      <Stack spacing={3} sx={{ p: 3 }}>
-        {/* <Field.Text name="timezone" type="zone" label="Select Time Zone" /> */}
-        <Field.CountrySelect fullWidth name="Select Time Zone" label="Select Time Zone" />
+        <Divider />
 
-        <Typography variant="span" sx={{ color: 'text.secondary', fontSize: '12px' }}>
-          Select the time zone that matches your current location.
-          <LearnMoreTypography sx={{ fontSize: '12px' }} />
-        </Typography>
+        <Stack spacing={3} sx={{ p: 3 }}>
+          <Field.Text
+            name="APIKey"
+            type="password"
+            label="API Key"
+            value="0000000000000000000000000000000"
+          />
+          <Typography variant="span" sx={{ color: 'text.secondary', fontSize: '12px' }}>
+            Use the Copy button to securely copy it. Keep it private and dont share with others.
+            <LearnMoreTypography sx={{ ml: '2px', fontSize: '12px' }} />
+          </Typography>
+          <Field.Text
+            name="SecretKey"
+            type="password"
+            label="Secret Key"
+            value="0000000000000000000000000000000"
+          />
+          <Typography variant="span" sx={{ color: 'text.secondary', fontSize: '12px' }}>
+            Use the Copy button to securely copy it. Keep it private and dont share with others.
+            <LearnMoreTypography sx={{ ml: '2px', fontSize: '12px' }} />
+          </Typography>
+          <Box>
+            <Button variant="contained" color="primary">
+              {Title}
+            </Button>
+          </Box>
 
-        <Box>
-          <Button variant="contained" color="primary">
-            {Title}
-          </Button>
-        </Box>
-
-        {/* <Stack spacing={1.5}>
+          {/* <Stack spacing={1.5}>
           <Typography variant="subtitle2">Content</Typography>
           <Field.Editor name="description" sx={{ maxHeight: 480 }} />
         </Stack>
@@ -167,8 +199,9 @@ export function TimeZoneCard({ currentProduct, Title = 'Save' }) {
             onUpload={() => console.info('ON UPLOAD')}
           />
         </Stack> */}
-      </Stack>
-    </Card>
+        </Stack>
+      </Card>
+    </Box>
   );
 
   //   const renderProperties = (
@@ -366,15 +399,7 @@ export function TimeZoneCard({ currentProduct, Title = 'Save' }) {
 
   return (
     <Form methods={methods} onSubmit={onSubmit}>
-      {/* <Stack spacing={{ xs: 3, md: 5 }} sx={{ mx: 'auto', maxWidth: { xs: 720, xl: 880 } }}> */}
       {renderDetails}
-
-      {/* {renderProperties}
-
-        {renderPricing}
-
-        {renderActions} */}
-      {/* </Stack> */}
     </Form>
   );
 }

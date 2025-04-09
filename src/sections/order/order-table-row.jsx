@@ -82,7 +82,7 @@ export function OrderTableRow({
       </TableCell>
 
       <TableCell>
-        <Typography varirent="span" sx={{ fontSize: '14px', fontWeight: 'normal' }}>
+        <Typography varirent="span" align="center" sx={{ fontSize: '14px', fontWeight: 'normal' }}>
           Contains 128 Emails
         </Typography>
       </TableCell>
@@ -93,7 +93,8 @@ export function OrderTableRow({
             {buttonTitle}
           </Button>
         </Tooltip>
-
+      </TableCell>
+      <TableCell align="center" sx={{ px: 1, whiteSpace: 'nowrap' }}>
         <Tooltip title={ellipsisTooltipTitle} arrow placement="top">
           {verificationStatus === 'Uploading' || verificationStatus === 'Processing' ? (
             <IconButton

@@ -67,21 +67,34 @@ export default function Page() {
             tooltipTitle="Number of emails lists uploaded in your account."
           />
         </Box>
+
         <Box
           sx={{
             display: 'flex',
+            flexDirection: { xs: 'column', md: 'row' }, // Stack vertically on small screens, horizontally on medium and up
             justifyContent: 'space-between',
             alignItems: 'flex-start',
             gap: 3,
             mt: 3,
           }}
         >
-          <Box sx={{ width: '25%' }}>
-            <Card sx={{ width: '336.25px', p: 3 }}>
+          <Box sx={{ width: { xs: '100%', md: '25%' } }}>
+            {' '}
+            {/* Full width on small screens, 25% on medium and up */}
+            <Card sx={{ width: '100%', p: 3 }}>
+              {' '}
+              {/* Use 100% width for the card */}
               <DashboardFolders />
             </Card>
           </Box>
-          <Box sx={{ width: '75%', display: 'flex', flexDirection: 'column', gap: 3 }}>
+          <Box
+            sx={{
+              width: { xs: '100%', md: '75%' },
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 3,
+            }}
+          >
             <BigCard
               Items={items}
               style={style}
@@ -89,7 +102,8 @@ export default function Page() {
               visibility="block"
               img={imgPath}
               bigcardtitle="Verification Guidelines"
-              tooltipTitle="Click to veriry single or bulk email addresses"
+              tooltipTitle="Click to verify single or bulk email addresses"
+              secondaryTextVisibility="block"
             />
 
             <Box>

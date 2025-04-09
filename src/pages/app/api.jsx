@@ -53,29 +53,13 @@
 // }
 
 import { CONFIG } from 'src/config-global';
-import { DashboardContent } from 'src/layouts/dashboard';
 
-import PageHeader from 'src/components/page-header/page-header';
-
-import { CurrentSummaryView } from 'src/sections/current-summary/component/current-summary-tab';
-
-import APIComponent from '../../sections/api/components/api-component';
+import { APISummaryView } from 'src/sections/api/components/api-summary-view/api-summary-view';
 
 // ----------------------------------------------------------------------
 
 const metadata = { title: `Page two | Dashboard - ${CONFIG.site.name}` };
 
 export default function Page() {
-  return (
-    <DashboardContent maxWidth="xl" sx={{ display: 'flex', gap: 3 }}>
-      <PageHeader
-        title="API"
-        descriptions="Generate your API Key and Secret Key to perform email verifications directly through the Pabbly Email Verification API. "
-        buttontitle="Verify Email"
-        visibility="none"
-      />
-      <CurrentSummaryView />
-      <APIComponent />
-    </DashboardContent>
-  );
+  return <APISummaryView />;
 }

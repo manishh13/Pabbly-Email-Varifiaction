@@ -24,6 +24,7 @@ export default function Page() {
         title="Credits Summary"
         descriptions="View a summary of your email verification credits. "
         buttontitle="Verify Email"
+        visibility="none"
       />
       <CurrentSummaryView />
       <Box

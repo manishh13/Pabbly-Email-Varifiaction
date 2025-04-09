@@ -3,11 +3,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMemo, useState, useEffect, useCallback } from 'react';
 
-import Card from '@mui/material/Card';
-import Stack from '@mui/material/Stack';
-import Divider from '@mui/material/Divider';
-import CardHeader from '@mui/material/CardHeader';
-import { Box, Button, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 
 import { paths } from 'src/routes/paths';
 import { useRouter } from 'src/routes/hooks';
@@ -15,8 +11,18 @@ import { useRouter } from 'src/routes/hooks';
 import { PRODUCT_CATEGORY_GROUP_OPTIONS } from 'src/_mock';
 
 // import { toast } from 'src/components/snackbar';
-import { Form, Field } from 'src/components/hook-form';
-import LearnMoreTypography from 'src/components/learn-more/learn-more';
+import { Form } from 'src/components/hook-form';
+import { StatsCards } from 'src/components/stats-cards/stats-cards';
+
+import BigCard from 'src/sections/dashboard/components/big-card/big-card';
+import { TeamMemberTable } from 'src/sections/team-members/component/team-member-table/team-member-table';
+import { FolderShareTable } from 'src/sections/team-members/component/folder-shared-table/folder-shared-table';
+import { listItemes } from 'src/sections/dashboard/components/dashboard-big-card-list-items/dashboard-big-card-list-items';
+
+const { items, style } = listItemes;
+
+const imgPath =
+  '../../public/assets/images/big-card-thumbnail/email-verication-video-thumbnail.jpg';
 
 // ----------------------------------------------------------------------
 
@@ -43,7 +49,7 @@ export const NewProductSchema = zod.object({
 
 // ----------------------------------------------------------------------
 
-export function APIKeyGenerate({ currentProduct, Title = 'Generate API Keys' }) {
+export function TeamMemberCard({ currentProduct, Title = 'Generate API Keys' }) {
   const router = useRouter();
 
   const [includeTaxes, setIncludeTaxes] = useState(false);
@@ -130,47 +136,52 @@ export function APIKeyGenerate({ currentProduct, Title = 'Generate API Keys' }) 
   }, []);
 
   const renderDetails = (
-    <Card>
-      <CardHeader title="API" sx={{ mb: 3 }} />
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+      <Box
+        sx={{
+          mt: 5,
+          gap: 3,
+          display: 'grid',
+          gridTemplateColumns: { xs: 'repeat(1, 1fr)', md: 'repeat(3, 1fr)' },
+        }}
+      >
+        <StatsCards
+          title="Email Credits Consumed"
+          total={32}
+          color="primary"
+          icon_name="Processed.svg"
+          icon_color="#10cbf3"
+        />
 
-      <Divider />
+        <StatsCards
+          title="Email Credits Remaining"
+          total={9968}
+          color="primary"
+          icon_name="Complete.svg"
+          icon_color="#1d88fa"
+        />
 
-      <Stack spacing={3} sx={{ p: 3 }}>
-        <Field.Text name="name" label="API Key" />
-        <Typography variant="span" sx={{ color: 'text.secondary', fontSize: '12px' }}>
-          Use the Copy button to securely copy it. Keep it private and dont share with others.
-          <LearnMoreTypography sx={{ fontSize: '12px' }} />
-        </Typography>
-        <Field.Text name="name" label="Secret Key" />
-        <Typography variant="span" sx={{ color: 'text.secondary', fontSize: '12px' }}>
-          Use the Copy button to securely copy it. Keep it private and dont share with others.
-          <LearnMoreTypography sx={{ fontSize: '12px' }} />
-        </Typography>
-        <Box>
-          <Button variant="contained" color="primary">
-            {Title}
-          </Button>
-        </Box>
-
-        {/* <Stack spacing={1.5}>
-          <Typography variant="subtitle2">Content</Typography>
-          <Field.Editor name="description" sx={{ maxHeight: 480 }} />
-        </Stack>
-
-        <Stack spacing={1.5}>
-          <Typography variant="subtitle2">Images</Typography>
-          <Field.Upload
-            multiple
-            thumbnail
-            name="images"
-            maxSize={3145728}
-            onRemove={handleRemoveFile}
-            onRemoveAll={handleRemoveAllFiles}
-            onUpload={() => console.info('ON UPLOAD')}
-          />
-        </Stack> */}
-      </Stack>
-    </Card>
+        <StatsCards
+          title="Total Number of Email Lists"
+          total={100}
+          color="success"
+          icon_name="list.svg"
+          icon_color="#28a645"
+        />
+      </Box>
+      <BigCard
+        Items={items}
+        style={style}
+        buttontitle="Add Team Member"
+        visibility="none"
+        img={imgPath}
+        buttonVisibility="block"
+        bigcardtitle="Points To Remember"
+        secondaryTextVisibility="none"
+      />
+      <TeamMemberTable />
+      <FolderShareTable />
+    </Box>
   );
 
   //   const renderProperties = (
@@ -368,15 +379,7 @@ export function APIKeyGenerate({ currentProduct, Title = 'Generate API Keys' }) 
 
   return (
     <Form methods={methods} onSubmit={onSubmit}>
-      {/* <Stack spacing={{ xs: 3, md: 5 }} sx={{ mx: 'auto', maxWidth: { xs: 720, xl: 880 } }}> */}
       {renderDetails}
-
-      {/* {renderProperties}
-
-        {renderPricing}
-
-        {renderActions} */}
-      {/* </Stack> */}
     </Form>
   );
 }

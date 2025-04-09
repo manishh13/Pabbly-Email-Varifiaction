@@ -52,18 +52,10 @@ const STATUS_OPTIONS = [
 ];
 
 const TABLE_HEAD = [
-  { id: 'orderNumber', label: 'Status/Name/Date' },
-  { id: 'name', label: 'Number of Emails/Credits Consumed' },
-  { id: 'createdAt', label: 'Action' },
-  // {
-  //   id: 'totalQuantity',
-  //   label: 'Items',
-  //   width: 120,
-  //   align: 'center',
-  // },
-  // { id: 'totalAmount', label: 'Price', width: 140 },
-  // { id: 'status', label: 'Status', width: 110 },
-  // { id: '', width: 88 },
+  { id: 'orderNumber', label: 'Status/Name/Date', widht: '346px' },
+  { id: 'name', label: 'Number of Emails/Credits Consumed', width: '352.34', align: 'center' },
+  { id: 'createdAt', label: 'Action', width: '258.58px', align: 'right' },
+  { widht: '52.05px' },
 ];
 
 // ----------------------------------------------------------------------
@@ -144,174 +136,149 @@ export function OrderListView() {
   );
 
   return (
-    <>
-      <Card>
-        <CardHeader
-          title="Home"
-          subheader="Verify and manage all your uploaded email lists here."
-          sx={{ mb: 3 }}
-        />
+    <Card>
+      <CardHeader
+        title="Home"
+        subheader="Verify and manage all your uploaded email lists here."
+        sx={{ mb: 3 }}
+      />
 
-        <Divider />
-        <Tabs
-          value={filters.state.status}
-          onChange={handleFilterStatus}
-          sx={{
-            px: 2.5,
-            boxShadow: (theme) =>
-              `inset 0 -2px 0 0 ${varAlpha(theme.vars.palette.grey['500Channel'], 0.08)}`,
-          }}
-        >
-          {STATUS_OPTIONS.map((tab) => (
-            <Tooltip title={tab.tooltipTitle} arrow placement="top">
-              <Tab
-                key={tab.value}
-                iconPosition="end"
-                value={tab.value}
-                label={tab.label}
-                icon={
-                  <Label
-                    variant={
-                      ((tab.value === 'all' || tab.value === filters.state.status) && 'filled') ||
-                      'soft'
-                    }
-                    color={
-                      (tab.value === 'verified' && 'success') ||
-                      (tab.value === 'processing' && 'primary') ||
-                      (tab.value === 'uploading' && 'warning') ||
-                      (tab.value === 'unverify' && 'error') ||
-                      'default'
-                    }
-                  >
-                    {['completed', 'pending', 'cancelled', 'refunded'].includes(tab.value)
-                      ? tableData.filter((user) => user.status === tab.value).length
-                      : tableData.length}
-                  </Label>
-                }
-              />
-            </Tooltip>
-          ))}
-        </Tabs>
+      <Divider />
+      <Tabs
+        value={filters.state.status}
+        onChange={handleFilterStatus}
+        sx={{
+          px: 2.5,
+          boxShadow: (theme) =>
+            `inset 0 -2px 0 0 ${varAlpha(theme.vars.palette.grey['500Channel'], 0.08)}`,
+        }}
+      >
+        {STATUS_OPTIONS.map((tab) => (
+          <Tooltip title={tab.tooltipTitle} arrow placement="top">
+            <Tab
+              key={tab.value}
+              iconPosition="end"
+              value={tab.value}
+              label={tab.label}
+              icon={
+                <Label
+                  variant={
+                    ((tab.value === 'all' || tab.value === filters.state.status) && 'filled') ||
+                    'soft'
+                  }
+                  color={
+                    (tab.value === 'verified' && 'success') ||
+                    (tab.value === 'processing' && 'primary') ||
+                    (tab.value === 'uploading' && 'warning') ||
+                    (tab.value === 'unverify' && 'error') ||
+                    'default'
+                  }
+                >
+                  {['completed', 'pending', 'cancelled', 'refunded'].includes(tab.value)
+                    ? tableData.filter((user) => user.status === tab.value).length
+                    : tableData.length}
+                </Label>
+              }
+            />
+          </Tooltip>
+        ))}
+      </Tabs>
 
-        <OrderTableToolbar
+      <OrderTableToolbar
+        filters={filters}
+        onResetPage={table.onResetPage}
+        dateError={dateError}
+        placeholder="Search customer or order number..."
+      />
+
+      {canReset && (
+        <OrderTableFiltersResult
           filters={filters}
+          totalResults={dataFiltered.length}
           onResetPage={table.onResetPage}
-          dateError={dateError}
-          placeholder="Search customer or order number..."
+          sx={{ p: 2.5, pt: 0 }}
+        />
+      )}
+
+      <Box sx={{ position: 'relative' }}>
+        <TableSelectedAction
+          dense={table.dense}
+          numSelected={table.selected.length}
+          rowCount={dataFiltered.length}
+          onSelectAllRows={(checked) =>
+            table.onSelectAllRows(
+              checked,
+              dataFiltered.map((row) => row.id)
+            )
+          }
+          action={
+            <Tooltip title="Delete">
+              <IconButton color="primary" onClick={confirm.onTrue}>
+                <Iconify icon="solar:trash-bin-trash-bold" />
+              </IconButton>
+            </Tooltip>
+          }
         />
 
-        {canReset && (
-          <OrderTableFiltersResult
-            filters={filters}
-            totalResults={dataFiltered.length}
-            onResetPage={table.onResetPage}
-            sx={{ p: 2.5, pt: 0 }}
-          />
-        )}
+        <Scrollbar sx={{ minHeight: 444 }}>
+          <Table size={table.dense ? 'small' : 'medium'} sx={{ minWidth: 960 }}>
+            <TableHeadCustom
+              order={table.order}
+              orderBy={table.orderBy}
+              headLabel={TABLE_HEAD}
+              rowCount={dataFiltered.length}
+              numSelected={table.selected.length}
+              onSort={table.onSort}
+              onSelectAllRows={(checked) =>
+                table.onSelectAllRows(
+                  checked,
+                  dataFiltered.map((row) => row.id)
+                )
+              }
+            />
 
-        <Box sx={{ position: 'relative' }}>
-          <TableSelectedAction
-            dense={table.dense}
-            numSelected={table.selected.length}
-            rowCount={dataFiltered.length}
-            onSelectAllRows={(checked) =>
-              table.onSelectAllRows(
-                checked,
-                dataFiltered.map((row) => row.id)
-              )
-            }
-            action={
-              <Tooltip title="Delete">
-                <IconButton color="primary" onClick={confirm.onTrue}>
-                  <Iconify icon="solar:trash-bin-trash-bold" />
-                </IconButton>
-              </Tooltip>
-            }
-          />
+            <TableBody>
+              {dataFiltered
+                .slice(
+                  table.page * table.rowsPerPage,
+                  table.page * table.rowsPerPage + table.rowsPerPage
+                )
+                .map((row, index) => (
+                  <OrderTableRow
+                    key={row.id}
+                    row={row}
+                    selected={table.selected.includes(row.id)}
+                    onSelectRow={() => table.onSelectRow(row.id)}
+                    onDeleteRow={() => handleDeleteRow(row.id)}
+                    onViewRow={() => handleViewRow(row.id)}
+                    buttonTitle={row.buttonTitle[index].value}
+                    toolTitle={row.buttonTitle[index].tooltipTitle}
+                    verificationStatus={row.verificationStatus[index]}
+                    ellipsisTooltipTitle={row.buttonTitle[index].ellipsisTooltipTitle}
+                  />
+                ))}
 
-          <Scrollbar sx={{ minHeight: 444 }}>
-            <Table size={table.dense ? 'small' : 'medium'} sx={{ minWidth: 960 }}>
-              <TableHeadCustom
-                order={table.order}
-                orderBy={table.orderBy}
-                headLabel={TABLE_HEAD}
-                rowCount={dataFiltered.length}
-                numSelected={table.selected.length}
-                onSort={table.onSort}
-                onSelectAllRows={(checked) =>
-                  table.onSelectAllRows(
-                    checked,
-                    dataFiltered.map((row) => row.id)
-                  )
-                }
+              <TableEmptyRows
+                height={table.dense ? 56 : 56 + 20}
+                emptyRows={emptyRows(table.page, table.rowsPerPage, dataFiltered.length)}
               />
 
-              <TableBody>
-                {dataFiltered
-                  .slice(
-                    table.page * table.rowsPerPage,
-                    table.page * table.rowsPerPage + table.rowsPerPage
-                  )
-                  .map((row, index) => (
-                    <OrderTableRow
-                      key={row.id}
-                      row={row}
-                      selected={table.selected.includes(row.id)}
-                      onSelectRow={() => table.onSelectRow(row.id)}
-                      onDeleteRow={() => handleDeleteRow(row.id)}
-                      onViewRow={() => handleViewRow(row.id)}
-                      buttonTitle={row.buttonTitle[index].value}
-                      toolTitle={row.buttonTitle[index].tooltipTitle}
-                      verificationStatus={row.verificationStatus[index]}
-                      ellipsisTooltipTitle={row.buttonTitle[index].ellipsisTooltipTitle}
-                    />
-                  ))}
+              <TableNoData notFound={notFound} />
+            </TableBody>
+          </Table>
+        </Scrollbar>
+      </Box>
 
-                <TableEmptyRows
-                  height={table.dense ? 56 : 56 + 20}
-                  emptyRows={emptyRows(table.page, table.rowsPerPage, dataFiltered.length)}
-                />
-
-                <TableNoData notFound={notFound} />
-              </TableBody>
-            </Table>
-          </Scrollbar>
-        </Box>
-
-        <TablePaginationCustom
-          page={table.page}
-          dense={table.dense}
-          count={dataFiltered.length}
-          rowsPerPage={table.rowsPerPage}
-          onPageChange={table.onChangePage}
-          onChangeDense={table.onChangeDense}
-          onRowsPerPageChange={table.onChangeRowsPerPage}
-        />
-      </Card>
-
-      {/* <ConfirmDialog
-        open={confirm.value}
-        onClose={confirm.onFalse}
-        title="Delete"
-        content={
-          <>
-            Are you sure want to delete <strong> {table.selected.length} </strong> items?
-          </>
-        }
-        action={
-          <Button
-            variant="contained"
-            color="error"
-            onClick={() => {
-              handleDeleteRows();
-              confirm.onFalse();
-            }}
-          >
-            Delete
-          </Button>
-        }
-      /> */}
-    </>
+      <TablePaginationCustom
+        page={table.page}
+        dense={table.dense}
+        count={dataFiltered.length}
+        rowsPerPage={table.rowsPerPage}
+        onPageChange={table.onChangePage}
+        onChangeDense={table.onChangeDense}
+        onRowsPerPageChange={table.onChangeRowsPerPage}
+      />
+    </Card>
   );
 }
 

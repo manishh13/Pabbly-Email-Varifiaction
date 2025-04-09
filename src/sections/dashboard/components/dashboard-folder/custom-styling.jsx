@@ -143,7 +143,6 @@ import {
   Divider,
   Tooltip,
   MenuItem,
-  IconButton,
   Typography,
   ToggleButton,
   ListItemButton,
@@ -204,30 +203,36 @@ const DashboardFolders = () => {
         </Tooltip>
       </Box>
       <Divider />
-      <List component="nav">
+      <List>
         {folders.map((folder, index) => (
           <Box
             key={index}
-            sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
           >
             <ListItemButton
               onClick={() => handleClick(index)}
-              sx={{ display: 'flex', justifyContent: 'space-between' }}
+              sx={{ display: 'flex', justifyContent: 'space-between', px: 1 }}
             >
-              <Typography variant="span" sx={{ fontSize: '14px' }}>
-                {folder}{' '}
+              <Typography variant="span" sx={{ fontSize: '14px', fontWeight: 500 }}>
+                {folder}
                 <Typography variant="span" sx={{ color: 'gray', ml: 1 }}>
                   (0)
                 </Typography>
               </Typography>
-              {/* <ListItemText primary={folder} /> */}
-              {open === index ? (
-                <Iconify icon="heroicons:ellipsis-vertical-solid" color="gray" />
-              ) : (
-                <Iconify icon="heroicons:ellipsis-vertical-solid" color="gray" />
-              )}
+              <Box>
+                {folder === 'Home' || folder === 'Trash' ? null : (
+                  <Iconify
+                    icon="eva:more-vertical-fill"
+                    sx={{ width: '16px', height: '16px', color: '#637381' }}
+                  />
+                )}
+              </Box>
             </ListItemButton>
-            <IconButton onClick={handleMenuOpen}>{/* <MoreVert /> */}</IconButton>
+            {/* <IconButton onClick={handleMenuOpen}><MoreVert /></IconButton> */}
           </Box>
         ))}
       </List>

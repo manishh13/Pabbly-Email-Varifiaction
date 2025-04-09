@@ -3,7 +3,12 @@ import Tabs from '@mui/material/Tabs';
 
 import { useTabs } from 'src/hooks/use-tabs';
 
+import { DashboardContent } from 'src/layouts/dashboard';
+
 import { Iconify } from 'src/components/iconify';
+import PageHeader from 'src/components/page-header/page-header';
+
+import { APIKeyGenerate } from 'src/sections/api/components/api-card/api-key-generate';
 
 // ----------------------------------------------------------------------
 
@@ -33,17 +38,23 @@ export const TABS = [
 
 // ----------------------------------------------------------------------
 
-export function CurrentSummaryView() {
-  const tabs = useTabs('general');
+export function APISummaryView() {
+  const tabs = useTabs('billing');
 
   return (
-    <>
+    <DashboardContent maxWidth="xl" sx={{ display: 'flex', gap: 3 }}>
+      <PageHeader
+        title="API"
+        descriptions="Generate your API Key and Secret Key to perform email verifications directly through the Pabbly Email Verification API. "
+        buttontitle="Verify Email"
+        visibility="none"
+      />
       <Tabs value={tabs.value} onChange={tabs.onChange}>
         {TABS.map((tab) => (
           <Tab key={tab.value} label={tab.label} icon={tab.icon} value={tab.value} />
         ))}
       </Tabs>
-      {/* {tabs.value === 'billing' && <APIKeyGenerate />} */}
-    </>
+      {tabs.value === 'billing' && <APIKeyGenerate />}
+    </DashboardContent>
   );
 }

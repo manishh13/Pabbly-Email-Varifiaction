@@ -2,8 +2,7 @@ import { Box } from '@mui/material';
 
 import { CONFIG } from 'src/config-global';
 
-import BigCard from 'src/sections/dashboard/components/big-card/big-card';
-import { APIKeyGenerate } from 'src/sections/api/components/api-card/api-card';
+import { APIKeyGenerate } from 'src/sections/api/components/api-card/api-key-generate';
 import { api_listItemes } from 'src/sections/dashboard/components/dashboard-big-card-list-items/dashboard-big-card-list-items';
 
 const imgPath = '../public/assets/images/big-card-thumbnail/email-verication-video-thumbnail.jpg';
@@ -25,7 +24,7 @@ export default function APIComponent() {
         gap: 3,
       }}
     >
-      <BigCard
+      {/* <BigCard
         Items={items}
         style={style}
         buttontitle="Verify Email"
@@ -33,7 +32,8 @@ export default function APIComponent() {
         img={imgPath}
         buttonVisibility="none"
         bigcardtitle="Points To Remember"
-      />
+        secondaryTextVisibility="none"
+      /> */}
 
       <APIKeyGenerate />
     </Box>

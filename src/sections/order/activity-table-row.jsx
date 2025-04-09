@@ -92,7 +92,7 @@ export function ActivityTableRow({
         </Typography>
       </TableCell>
 
-      <TableCell sx={{ px: 1, whiteSpace: 'nowrap' }}>
+      <TableCell align="right" sx={{ px: 1, whiteSpace: 'nowrap' }}>
         <Typography varirent="span" color="primary" sx={{ fontSize: '14px', fontWeight: 'normal' }}>
           67764b1fb9e6371d99c28a37
         </Typography>

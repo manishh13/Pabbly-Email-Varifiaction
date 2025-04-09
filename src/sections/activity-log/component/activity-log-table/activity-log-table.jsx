@@ -46,10 +46,10 @@ import { OrderTableFiltersResult } from '../../../order/order-table-filters-resu
 const STATUS_OPTIONS = [{ value: 'all', label: 'All' }, ...ORDER_STATUS_OPTIONS];
 
 const TABLE_HEAD = [
-  { id: 'orderNumber', label: 'Action/Date' },
-  { id: 'name', label: 'Actor' },
-  { id: 'createdAt', label: 'Section/Source' },
-  { id: 'createdAt', label: 'Activity Data' },
+  { id: 'orderNumber', label: 'Action/Date', width: '329.69px', align: 'left' },
+  { id: 'name', label: 'Actor', width: '406.07px', align: 'left' },
+  { id: 'createdAt', label: 'Section/Source', width: '253.61px', align: 'left' },
+  { id: 'createdAt', label: 'Activity Data', width: '427px', align: 'right' },
 ];
 
 // ----------------------------------------------------------------------

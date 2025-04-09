@@ -79,7 +79,7 @@ export function CreditSummaryTable({
       </TableCell>
 
       <TableCell>
-        <Typography varirent="span" sx={{ fontSize: '14px', fontWeight: 'normal' }}>
+        <Typography varirent="span" align="right" sx={{ fontSize: '14px', fontWeight: 'normal' }}>
           -9
         </Typography>
       </TableCell>
@@ -126,8 +126,6 @@ export function CreditSummaryTable({
                 />
 
                 <div>x{item.quantity} </div>
-
-                {/* <Box sx={{ width: 110, textAlign: 'right' }}>{fCurrency(item.price)}</Box> */}
               </Stack>
             ))}
           </Paper>

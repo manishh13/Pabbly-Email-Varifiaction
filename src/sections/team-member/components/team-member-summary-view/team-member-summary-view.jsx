@@ -4,6 +4,9 @@ import Tabs from '@mui/material/Tabs';
 import { useTabs } from 'src/hooks/use-tabs';
 
 import { Iconify } from 'src/components/iconify';
+import PageHeader from 'src/components/page-header/page-header';
+
+import { TeamMemberCard } from '../team-member-card/team-member-card';
 
 // ----------------------------------------------------------------------
 
@@ -33,17 +36,23 @@ export const TABS = [
 
 // ----------------------------------------------------------------------
 
-export function CurrentSummaryView() {
-  const tabs = useTabs('general');
+export function TeamMemberSummaryView() {
+  const tabs = useTabs('notifications');
 
   return (
     <>
+      <PageHeader
+        title="Team Members"
+        descriptions="Add team members and share folder(s) access with them from here. "
+        buttontitle="Verify Email"
+        visibility="none"
+      />
       <Tabs value={tabs.value} onChange={tabs.onChange}>
         {TABS.map((tab) => (
           <Tab key={tab.value} label={tab.label} icon={tab.icon} value={tab.value} />
         ))}
       </Tabs>
-      {/* {tabs.value === 'billing' && <APIKeyGenerate />} */}
+      {tabs.value === 'notifications' && <TeamMemberCard />}
     </>
   );
 }

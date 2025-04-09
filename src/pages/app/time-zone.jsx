@@ -1,10 +1,7 @@
 import { CONFIG } from 'src/config-global';
 import { DashboardContent } from 'src/layouts/dashboard';
 
-import PageHeader from 'src/components/page-header/page-header';
-
-import { TimeZoneCard } from 'src/sections/time-zone/components/time-zone-card/time-zone-card';
-import { CurrentSummaryView } from 'src/sections/current-summary/component/current-summary-tab';
+import { TimeZoneSummaryView } from 'src/sections/time-zone/components/time-zone-summary-tab/time-zone-summary-tab';
 
 import { listItemes } from '../../sections/dashboard/components/dashboard-big-card-list-items/dashboard-big-card-list-items';
 
@@ -17,14 +14,8 @@ const metadata = { title: `Page five | Dashboard - ${CONFIG.site.name}` };
 export default function Page() {
   return (
     <DashboardContent maxWidth="xl" sx={{ display: 'flex', gap: 3 }}>
-      <PageHeader
-        title="Time Zone"
-        descriptions="Manage your account time zone settings. "
-        buttontitle="Varify Email"
-        visibility="none"
-      />
-      <CurrentSummaryView />
-      <TimeZoneCard />
+      {/* <CurrentSummaryView /> */}
+      <TimeZoneSummaryView />
     </DashboardContent>
   );
 }

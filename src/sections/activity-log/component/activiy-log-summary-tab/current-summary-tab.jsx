@@ -4,6 +4,9 @@ import Tabs from '@mui/material/Tabs';
 import { useTabs } from 'src/hooks/use-tabs';
 
 import { Iconify } from 'src/components/iconify';
+import PageHeader from 'src/components/page-header/page-header';
+
+import { ActivityCard } from '../activity-card/activity-card';
 
 // ----------------------------------------------------------------------
 
@@ -33,17 +36,23 @@ export const TABS = [
 
 // ----------------------------------------------------------------------
 
-export function CurrentSummaryView() {
-  const tabs = useTabs('general');
+export function ActivitySummaryTab() {
+  const tabs = useTabs('social');
 
   return (
     <>
+      <PageHeader
+        title="Activity Log"
+        descriptions="Keep track of all actions in your Pabbly Email Verification account, like verifying single emails, uploading and verifying email lists, downloading reports, deleting email lists, adding team members, and regenerating API keys. Activity Log helps you monitor changes and ensure everything runs smoothly.  "
+        buttontitle="Verify Email"
+        visibility="none"
+      />
       <Tabs value={tabs.value} onChange={tabs.onChange}>
         {TABS.map((tab) => (
           <Tab key={tab.value} label={tab.label} icon={tab.icon} value={tab.value} />
         ))}
       </Tabs>
-      {/* {tabs.value === 'billing' && <APIKeyGenerate />} */}
+      {tabs.value === 'social' && <ActivityCard />}
     </>
   );
 }
