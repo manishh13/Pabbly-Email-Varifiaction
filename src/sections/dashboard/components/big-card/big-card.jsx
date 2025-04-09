@@ -15,6 +15,7 @@ const BigCard = ({
   bigcardtitle,
   tooltipTitle,
   secondaryTextVisibility,
+  playbuttonvisibility,
 }) => (
   <Card
     sx={{
@@ -98,6 +99,7 @@ const BigCard = ({
           src="/assets/images/big-card-thumbnail/play-icon (1).svg"
           alt="Email Verification Video"
           style={{
+            display: ` ${playbuttonvisibility}`,
             position: 'absolute',
             top: '50%',
             left: '50%',

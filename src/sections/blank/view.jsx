@@ -42,6 +42,7 @@ export function BlankView({ title = 'Blank', subTitle }) {
           buttontitle="Ask Question"
           img={imgPath}
           visibility="none"
+          playbuttonvisibility="none"
         />
       </Box>
 
@@ -109,7 +110,7 @@ export function BlankView({ title = 'Blank', subTitle }) {
           }}
         >
           <img
-            src="../public/assets/images/big-card-thumbnail/email-verication-video-thumbnail.jpg"
+            src="/assets/images/big-card-thumbnail/email-verication-video-thumbnail.jpg"
             alt="Email Verification Video"
             style={{ borderRadius: '16px', width: '100%', height: '100%', objectFit: 'cover' }}
           />
