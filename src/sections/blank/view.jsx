@@ -114,7 +114,7 @@ export function BlankView({ title = 'Blank', subTitle }) {
             style={{ borderRadius: '16px', width: '100%', height: '100%', objectFit: 'cover' }}
           />
           <img
-            src="../../../../../public/assets/images/big-card-thumbnail/play-icon (1).svg"
+            src="/assets/images/big-card-thumbnail/play-icon (1).svg"
             alt="Email Verification Video"
             style={{
               position: 'absolute',
