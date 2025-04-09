@@ -13,7 +13,7 @@ import BigCard from '../dashboard/components/big-card/big-card';
 import { help_n_tutorian_listItemes } from '../dashboard/components/dashboard-big-card-list-items/dashboard-big-card-list-items';
 
 const { items, style } = help_n_tutorian_listItemes;
-const imgPath = '../public/assets/images/get-help-thumbnail/get-help-photo.png';
+const imgPath = '/assets/images/get-help-thumbnail/get-help-photo.png';
 // ----------------------------------------------------------------------
 
 export function BlankView({ title = 'Blank', subTitle }) {
